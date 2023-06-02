@@ -1,0 +1,354 @@
+<section class="container py-3">
+  <div class="row">
+    <div class="d-inline-flex d-md-none d-lg-none justify-content-between">
+      <div
+        class="px-2 py-3 text-nowrap text-center fs-5 fw-bold mb-3 rounded bg-success"
+      >
+        <a routerLink="/addproject" class="text-decoration-none text-white"
+          ><i class="far fa-plus-square mx-3"></i>
+          {{ "add_project" | translate }}'
+        </a>
+      </div>
+      <!-- canvas Btn -->
+      <div class="py-1">
+        <button
+          class="canvasBtn d-inline-flex d-md-block d-lg-none"
+          type="button"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#offcanvasRight"
+          aria-controls="offcanvasRight"
+        >
+          <i class="fas fa-sliders-h"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- start right side  -->
+    <div class="col-4">
+      <div class="d-none d-md-block">
+        <div
+          class="px-2 py-3 text-nowrap text-center fs-5 fw-bold mb-3 rounded bgcolorbtn"
+        >
+          <a routerLink="/addproject" class="text-decoration-none text-white"
+            ><i class="far fa-plus-square mx-3"></i>
+            {{ "add_project" | translate }}
+          </a>
+        </div>
+        <!-- canvas Btn
+                  <button class="canvasBtn d-block d-md-none mx-5" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+                    <i class="fas fa-sliders-h"></i>
+                  </button> -->
+      </div>
+      <!-- offcanvas -->
+      <div
+        class="offcanvas offcanvas-end"
+        tabindex="-1"
+        id="offcanvasRight"
+        aria-labelledby="offcanvasRightLabel"
+      >
+        <div class="offcanvas-header">
+          <button
+            type="button"
+            class="btn-close text-reset"
+            data-bs-dismiss="offcanvas"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="accordion" id="accordionExample">
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+              <button
+                class="accordion-button text-muted fw-bold"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseOne"
+                aria-expanded="true"
+                aria-controls="collapseOne"
+              >
+                {{ "Category" | translate }}
+              </button>
+            </h2>
+            <div
+              id="collapseOne"
+              class="accordion-collapse collapse show"
+              aria-labelledby="headingOne"
+              data-bs-parent="#accordionExample"
+            >
+              <div
+                class="accordion-body p-0 fs-5"
+                *ngFor="let cat of ListofCatproj"
+              >
+                <div class="border p-2">
+                  <a
+                    type="button"
+                    class="text-decoration-none text-muted"
+                    (click)="ChangeCatID(cat.id)"
+                    ><i class="fa-solid {{ cat.icon }} ms-2"></i> {{ cat.name }}
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- <div class="accordion-item">
+            <h2 class="accordion-header" id="headingTwo">
+              <button
+                class="accordion-button collapsed text-muted"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseTwo"
+                aria-expanded="false"
+                aria-controls="collapseTwo"
+              >
+              {{"Skills"|translate}}
+              </button>
+            </h2>
+            <div
+              id="collapseTwo"
+              class="accordion-collapse collapse"
+              aria-labelledby="headingTwo"
+              data-bs-parent="#accordionExample"
+            >
+              <div class="accordion-body">
+                <input type="search" class="form-control" />
+              </div>
+            </div>
+          </div> -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingThree">
+              <button
+                class="accordion-button collapsed text-muted"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseThree"
+                aria-expanded="false"
+                aria-controls="collapseThree"
+              >
+                {{ "delivery_Duration" | translate }}
+              </button>
+            </h2>
+            <div
+              id="collapseThree"
+              class="accordion-collapse collapse"
+              aria-labelledby="headingThree"
+              data-bs-parent="#accordionExample"
+            >
+              <div
+                class="accordion-body border-2 border-bottom text-muted fs-5"
+                *ngFor="
+                  let DeliveryTime of ListofDeliverytimeprojects;
+                  let i = index
+                "
+              >
+                <div>
+                  <input
+                    type="checkbox"
+                    (click)="ChangeDelivary(DeliveryTime.id)"
+                  />
+                  {{ DeliveryTime.name }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- start right side {accordion} -->
+
+      <div class="accordion d-none d-lg-block" id="accordionExample">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingOne">
+            <button
+              class="accordion-button text-muted fs-5 fw-bold"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#collapseOne"
+              aria-expanded="true"
+              aria-controls="collapseOne"
+            >
+              {{ "Category" | translate }}
+            </button>
+          </h2>
+          <div
+            id="collapseOne"
+            class="accordion-collapse collapse show"
+            aria-labelledby="headingOne"
+            data-bs-parent="#accordionExample"
+          >
+            <div
+              class="accordion-body p-0 fs-5"
+              *ngFor="let cat of ListofCatproj; let i = index"
+            >
+              <div class="border p-2">
+                <a
+                  type="button"
+                  class="text-decoration-none text-muted"
+                  (click)="ChangeCatID(cat.id)"
+                  ><i class="fa-solid {{ cat.icon }} ms-2"></i> {{ cat.name }}
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--   <div class="accordion-item">
+          <h2 class="accordion-header" id="headingTwo">
+            <button
+              class="accordion-button collapsed text-muted fs-5 fw-bold"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#collapseTwo"
+              aria-expanded="false"
+              aria-controls="collapseTwo"
+            >
+              {{"Skills"|translate}}
+            </button>
+          </h2>
+          <div
+            id="collapseTwo"
+            class="accordion-collapse collapse"
+            aria-labelledby="headingTwo"
+            data-bs-parent="#accordionExample"
+          >
+            <div class="accordion-body">
+              <input type="search" class="form-control" />
+            </div>
+          </div>
+        </div> -->
+        <div class="accordion-item mb-3">
+          <h2 class="accordion-header" id="headingThree">
+            <button
+              class="accordion-button collapsed text-muted fs-5 fw-bold"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#collapseThree"
+              aria-expanded="false"
+              aria-controls="collapseThree"
+            >
+              {{ "delivery_Duration" | translate }}
+            </button>
+          </h2>
+          <div
+            id="collapseThree"
+            class="accordion-collapse collapse"
+            aria-labelledby="headingThree"
+            data-bs-parent="#accordionExample"
+          >
+            <div
+              class="accordion-body border-2 border-bottom text-muted fs-5"
+              *ngFor="
+                let DeliveryTime of ListofDeliverytimeprojects;
+                let i = index
+              "
+            >
+              <div>
+                <input
+                  type="checkbox"
+                  (click)="ChangeDelivary(DeliveryTime.id)"
+                />
+                {{ DeliveryTime.name }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="d-none d-lg-block">
+        <img src="./../../../assets//images/youtub.webp" class="w-100" alt="" />
+      </div>
+    </div>
+    <!-- End right side {accordion} -->
+
+    <!-- start main side {cards} -->
+    <!-- first card {heading} -->
+    <div class="col-lg-8 col-md-12">
+      <div
+        class="d-flex justify-content-between bg-white text-muted shadow p-3 rounded"
+      >
+        <!-- heading -->
+        <h4 class="d-md-block">
+          <i class="fa-solid fa-comment-dots"></i> {{ "Projects" | translate }}
+        </h4>
+        <div class="d-flex">
+          <!-- input-check -->
+          <div class="border rounded mx-2">
+            <div class="form-check form-check-inline">
+              <label class="form-check-label" for="inlineRadio1"
+                >{{ "all" | translate }}
+              </label>
+              <input
+                class="form-check-input"
+                type="radio"
+                name="inlineRadioOptions"
+                id="inlineRadio1"
+                value="all"
+                checked
+                (click)="getprojects()"
+              />
+            </div>
+            <div class="form-check form-check-inline">
+              <label class="form-check-label" for="inlineRadio2">{{
+                "open" | translate
+              }}</label>
+              <input
+                class="form-check-input"
+                type="radio"
+                name="inlineRadioOptions"
+                id="inlineRadio2"
+                value="open"
+                (click)="ChangeCatByStatus()"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- second card  -->
+      <!-- spinner -->
+      <div class="text-center mt-5 spinner" *ngIf="spinner">
+        <div class="spinner-border mt-5 text-bg-success" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
+
+      <!-- <button  (click)="getData()" >get data</button> -->
+      <ng-container *ngFor="let data of ListOfProject; let i = index">
+        <div class="container">
+          <div class="row shadow-lg rounded bg-white p-2 my-3">
+            <img
+              class="col-lg-1 col-md-2 col-sm-3"
+              src="{{ data.img }}"
+              alt="avatar"
+              style="
+                border-radius: 50%;
+                min-width: 7vw;
+                max-width: 15vw;
+                height: fit-content;
+              "
+            />
+            <div class="col-lg-9 col-md-7 col-sm-6 p-2 d-flex flex-column">
+              <div class="d-flex">
+                <a
+                  class="text-white text-decoration-none p-1 bgcolorbtn rounded ms-2"
+                  href="#"
+                  >{{ "open" | translate }}
+                </a>
+                <span
+                  class="fw-bold fs-5"
+                  (click)="Detailsproject(data.id)"
+                  style="cursor: pointer"
+                  >{{ data.title }}</span
+                >
+              </div>
+              <div class="mt-4 text-muted text-nowrap">
+                <i class="fa-solid fa-user-tie"></i> {{ data.personName }} |
+                <i class="fa-regular fa-clock"></i> {{ data.time }} |
+                <i class="fa-solid fa-hand-holding-dollar"></i>
+                {{ data.offers }}
+              </div>
+            </div>
+            <div class="col-lg-1 col-md-2 col-sm-2 text-nowrap fw-bold">
+              {{ data.budget }}
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+    <!-- End main side {cards} -->
+  </div>
+</section>

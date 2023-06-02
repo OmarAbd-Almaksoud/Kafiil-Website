@@ -1,0 +1,38 @@
+<div class="services-slider-container mb-5">
+  <div
+    class="services-slider-head d-flex justify-content-between bg-white p-3 border-bottom border-1 rounded mb-3"
+  >
+    <h5 class="head-title d-flex justify-content-start">
+      {{ sliderdata.name }}
+    </h5>
+    <div class="left d-flex justify-content-end">
+      <!-- <a href="#" class="see-all-btn" onclick="return false">
+        <button class="btn btn-light border">
+          شاهد المزيد <i class="fas fa-chevron-left"></i>
+        </button>
+      </a> -->
+    </div>
+  </div>
+  <div>
+    <div class="slider-nav position-relative d-flex">
+      <div class="prev" (click)="prevslide()" data-target="items">
+        <i class="fas fa-chevron-right"></i>
+      </div>
+      <div class="next" (click)="nextslide()" data-target="items">
+        <i class="fas fa-chevron-left"></i>
+      </div>
+    </div>
+    <div class="services-slider overflow-hidden d-flex flex-nowrap flex-row">
+      <div
+        #sliderstage
+        class="items d-flex gap-4 justify-content-between flex-nowrap flex-row"
+      >
+        <app-servicecard
+          #cardRef
+          *ngFor="let item of sliderdata.items"
+          [carddata]="item"
+        ></app-servicecard>
+      </div>
+    </div>
+  </div>
+</div>

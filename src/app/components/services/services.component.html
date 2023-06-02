@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ar">
+  <body id="body">
+    <div class="container">
+      <!-- Title -->
+      <div
+        class="col-12 d-flex justify-content-center align-content-center flex-column titlecontainer"
+      >
+        <div
+          class="d-flex justify-content-center align-content-center m-3 title"
+        >
+          <h2>{{ "Services That Help You Grow Your Business" | translate }}</h2>
+        </div>
+        <div
+          class="d-flex justify-content-center align-content-center title-desc flex-column align-items-center"
+        >
+          <p>{{ "services_subtitle" | translate }}</p>
+          <button class="btn addservicebtn" routerLink="/createservice">
+            <i class="fa-solid fa-square-plus"></i>
+            {{ "addd_service" | translate }}
+          </button>
+        </div>
+      </div>
+      <!-- Search -->
+      <div
+        action="#"
+        class="help-search flex-wrap d-flex align-items-center justify-content-center"
+      >
+        <div
+          class="search-box border border-1 rounded d-flex ms-3 pe-3 flex-grow-1 align-items-center"
+        >
+          <i class="fas fa-search ms-1"></i>
+          <input
+            class="border-0 d-flex flex-grow-1 form-control-lg"
+            id="search-for-gigs"
+            type="text"
+            placeholder="ابحث عن ..."
+            aria-label=".form-control-lg example"
+            name="searchtxt"
+            #searchvalue
+            (keydown)="search(searchvalue.value)"
+            (keyup)="search(searchvalue.value)"
+            list="browsers"
+          />
+        </div>
+        <button class="btn p-2 ps-5 m-2 pe-5" id="search" type="submit">
+          بحث
+        </button>
+      </div>
+      <!-- realtime search -->
+      <div class="real-time-search-results" *ngIf="searchvalue.value != ''">
+        <a href="/services/{{ item.uid }}" *ngFor="let item of searchlist">
+          <img [src]="item.data.mainImg" alt="" />
+          <span>{{ item.data.title }}</span>
+        </a>
+      </div>
+      <!-- category container -->
+      <div class="pb-40 search-category-container">
+        <div class="d-flex row g-4 search-category-row pb-5">
+          <!-- category-card -->
+
+          <div
+            class="col-6 col-sm-4 col-md-3 col-lg-2"
+            *ngFor="let category of categriesList; let i = index"
+          >
+            <a
+              href="/services_category/{{ category.categoryName }}"
+              class="search-category main-category-shortcut-button"
+              category_id=""
+              #categorybtn
+              *ngIf="i < showcount"
+            >
+              <div class="img">
+                <img src="{{ category.CategoryPic }}" alt="" />
+              </div>
+              <p class="title">{{ category.categoryName }}</p>
+            </a>
+          </div>
+
+          <div class="text-center">
+            <a href="" class="see-all-solid active" (click)="showallcat()">
+              {{ "show_all_categories" | translate }}
+              <i id="arrowicon" class="fas fa-chevron-down"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      <ng-container *ngFor="let slider of sliders">
+        <app-cardslider [sliderdata]="slider"></app-cardslider>
+      </ng-container>
+    </div>
+
+    <!-- Button trigger modal -->
+    <button
+      id="modalbtn"
+      type="button"
+      class="btn btn-primary d-none"
+      data-bs-toggle="modal"
+      data-bs-target="#prelodader"
+      #preloadermodalbtn
+    >
+      Launch preloader modal
+    </button>
+    <button
+      id="modalbtn"
+      type="button"
+      class="btn btn-primary d-none"
+      data-bs-dismiss="modal"
+      data-bs-target="#prelodader"
+      #preloaderdismissmodalbtn
+    >
+      preloader dismiss modal
+    </button>
+    <ngx-spinner
+      bdColor="#1dcf73"
+      size="medium"
+      color="#fff"
+      [fullScreen]="true"
+      size="large"
+      type="line-scale-pulse-out"
+    ></ngx-spinner>
+  </body>
+</html>

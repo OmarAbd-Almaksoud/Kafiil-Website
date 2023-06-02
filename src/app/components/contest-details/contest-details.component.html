@@ -1,0 +1,273 @@
+<section class="container my-5">
+  <div class="row">
+    <div class="col-12 col-lg-4 d-lg-block d-none">
+      <div class="accordion mb-3" id="accordionExample">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingOne">
+            <button
+              class="accordion-button text-black fw-bold"
+              dir="rtl"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#collapseOne"
+              aria-expanded="true"
+              aria-controls="collapseOne"
+            >
+              <i class="fas fa-user ms-3"></i>
+              {{ "contestOwner" | translate }}
+            </button>
+          </h2>
+          <div
+            id="collapseOne"
+            dir="rtl"
+            class="accordion-collapse collapse show"
+            aria-labelledby="headingOne"
+            data-bs-parent="#accordionExample"
+          >
+            <div class="accordion-body p-0">
+              <div class="block-body">
+                <div class="">
+                  <div class="d-flex">
+                    <a href="#" class="text-black text-decoration-none">
+                      <img [src]="selectedContest?.userImg" alt="" />
+                    </a>
+                    <div>
+                      <a
+                        href=""
+                        class="text-muted text-decoration-none d-block"
+                      >
+                        {{ selectedContest?.userName }}
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion mb-3" id="accordionTwo">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingTwo">
+            <button
+              class="accordion-button text-black fw-bold"
+              dir="rtl"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#collapseTwo"
+              aria-expanded="true"
+              aria-controls="collapseTwo"
+            >
+              <i class="fas fa-list-alt ms-3"></i>
+              {{ "details" | translate }}
+            </button>
+          </h2>
+          <div
+            id="collapseTwo"
+            dir="rtl"
+            class="accordion-collapse collapse show"
+            aria-labelledby="headingTwo"
+            data-bs-parent="#accordionTwo"
+          >
+            <div class="accordion-body p-0">
+              <div class="block-body-two text-muted">
+                <div class="d-flex justify-content-between py-3">
+                  <div>
+                    <i class="fas fa-calendar-alt"></i>
+                 {{ "contestOwner" | translate }}
+                  </div>
+                  <div>
+                    {{ endDate }}
+                  </div>
+                </div>
+
+                <div class="dark d-flex justify-content-between py-3">
+                  <div>
+                    <i class="far fa-calendar-alt"></i>
+                    {{ "contestTime" | translate }}
+                  </div>
+                  <div>{{ daysRemaining }}  {{ "days" | translate }}</div>
+                </div>
+
+                <div class="d-flex justify-content-between py-3">
+                  <div>
+                    <i class="fas fa-users"></i>
+                    {{ "contestants" | translate }}
+                  </div>
+                  <div>
+                    {{ selectedContest?.contestants }}
+                  </div>
+                </div>
+
+                <div class="dark d-flex justify-content-between py-3">
+                  <div>
+                    <i class="fas fa-users"></i>
+                    {{ "winnersNumber" | translate }}
+                  </div>
+                  <div>
+                    {{ selectedContest?.winnersNum }}
+                  </div>
+                </div>
+
+                <div class="d-flex justify-content-between py-3">
+                  <div>
+                    <i class="fas fa-photo-video"></i>
+                    {{ "Posts" | translate }}
+                  </div>
+                  <div>
+                    {{ selectedContest?.Posts }}
+                  </div>
+                </div>
+
+                <div class="d-flex justify-content-between py-3">
+                  <div>
+                    <i class="far fa-eye"></i>
+                    {{ "Views" | translate }}
+                  </div>
+                  <div>
+                    {{ selectedContest?.Views }}
+                  </div>
+                </div>
+
+                <div class="d-flex justify-content-between py-3">
+                  <div>
+                    <i class="far fa-comments"></i>
+                    {{ "comments" | translate }}
+                  </div>
+                  <div>
+                    {{ numberOfComments }}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-lg-8" dir="rtl">
+      <div class="filter">
+        <div class="p-4">
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="contestAbout">
+              <i class="far fa-list-alt ms-3 text-white fs-4"></i>
+              {{ "aboutContest" | translate }}
+            </div>
+            <div class="price">
+              <i class="fas fa-trophy"></i> {{ selectedContest?.firstWinner }} $
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="filter">
+
+        <div class="text-black">
+          <p class="titleContest fw-bold">
+            {{ selectedContest?.title}}
+          </p>
+        </div>
+
+        <div class="d-flex">
+          <a href="#" class="text-black text-decoration-none">
+            <img [src]="selectedContest?.userImg" alt="" />
+          </a>
+          <div>
+            <a href="" class="text-muted text-decoration-none d-block mt-3">
+              {{ selectedContest?.userName }}
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <p>
+            <i class="fas fa-list-alt ms-3"></i>
+            {{ "details" | translate }}
+          </p>
+          <div class="me-3">
+            <p>
+              {{ selectedContest?.description }}
+            </p>
+          </div>
+        </div>
+
+        <div>
+          <p>
+            <i class="fas fa-list-alt ms-3"></i>
+            {{ "conditions" | translate }}
+          </p>
+          <div class="me-3">
+            <p>
+              {{ selectedContest?.conditions }}
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="filter">
+        <div class="head text-black fw-bold">
+          <i class="far fa-star ms-3"></i>
+          {{ "skills" | translate }}
+        </div>
+        <div>
+          <p class="body">
+            <i class="fas fa-tag"></i>
+            {{ selectedContest?.skills }}
+          </p>
+        </div>
+      </div>
+
+      <div class="last-filter">
+        <div class="head text-black fw-bold">
+          <i class="far fa-comments ms-3"></i>
+          {{ "comments" | translate }}
+        </div>
+
+        <div class="inner-row" id="row">
+          <ng-container *ngFor="let comment of contestComments; let i = index">
+            <div>
+              <div class="d-flex">
+                <div>
+                  <a href="#" class="text-black text-decoration-none">
+                    <img [src]="comment.userImg" alt="" />
+                  </a>
+                </div>
+                <div>
+                  <a
+                    href=""
+                    class="text-muted text-decoration-none d-block mt-3"
+                  >
+                    {{ comment.userName }}
+                  </a>
+                </div>
+              </div>
+              <p class="me-4">{{ comment.comment }}</p>
+            </div>
+          </ng-container>
+        </div>
+
+        <form>
+          <div class="m-3">
+            <textarea
+              class="form-control"
+              id="comments"
+              name="comments"
+              rows="7"
+              required
+              #comment
+            ></textarea>
+          </div>
+
+          <button
+            type="submit"
+            class="btn btn-success rounded submitbtn m-3"
+            (click)="addComment(comment.value)"
+          >
+          {{ "AddReply" | translate }}
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

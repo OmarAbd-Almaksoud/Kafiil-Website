@@ -1,0 +1,250 @@
+$main: #1dbf73;
+
+.titleContest::before {
+  content: "";
+  display: inline-block;
+  width: 9px;
+  height: 7px;
+  border-radius: 1px;
+  background-color: #1dbf73;
+  margin-top: 13px;
+}
+
+.accordion-button::after {
+  margin-left: unset !important;
+  margin-right: auto !important;
+}
+
+.icon-drop-left button {
+  width: 30px;
+  height: 30px;
+  background-color: #f8f8f8;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #707070;
+  font-size: 18px;
+  cursor: pointer;
+  border: 1px solid #dee0e1;
+}
+
+.project-info-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: #fff;
+  margin-bottom: 10px;
+  border: 1px solid #dee0e1;
+  border-radius: 8px;
+}
+
+.project-info-head img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-top: 5px;
+  margin-left: 10px;
+}
+
+.project-info-head .text {
+  font-size: 14px;
+  color: #777;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.project-info-head .text:not(:last-child) {
+  border-left: 1px solid #777;
+  margin-left: 12px;
+  padding-left: 12px;
+  line-height: 1;
+}
+
+.project-info-head .text i {
+  color: $main;
+}
+
+.block-body {
+  padding: 20px;
+}
+
+.block-body img,
+.row img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-top: 5px;
+  margin-left: 10px;
+}
+
+.block-body .text i {
+  color: $main;
+}
+
+.block-body-two > div {
+  border-bottom: 1px solid #ced4da;
+  padding: 20px;
+}
+
+.block-body-two > div:last-child {
+  border-bottom: none;
+}
+
+.block-body-two .dark {
+  background-color: #f8f8f8;
+}
+
+.filter,
+.last-filter {
+  border-radius: 8px;
+  background-color: #fff;
+  border: 1px solid #dee0e1;
+  margin-bottom: 15px;
+}
+
+.filter > div {
+  padding: 12px 15px;
+}
+
+.filter .head,
+.last-filter .head {
+  border-bottom: 1px solid #ced4da;
+}
+
+.last-filter .head {
+  padding: 12px 15px;
+}
+
+.filter .body {
+  border-radius: 8px;
+  background-color: #f6f6f6;
+  border: 1px solid #dee0e1;
+  padding: 5px 8px;
+  display: inline;
+  margin: 10px 0px;
+}
+
+.filter .body i {
+  color: $main;
+}
+
+.inner-row > div {
+  border-bottom: 1px solid #ced4da;
+  padding: 20px;
+}
+
+.inner-row > div:last-child {
+  border-bottom: none;
+}
+
+.share-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid #ddd;
+}
+
+.text-time {
+  border-right: 1px solid #cdcdcd;
+  margin-right: 7px;
+  padding-right: 7px;
+}
+
+.add button {
+  background-color: $main;
+  color: #ffffff;
+  border-color: 1px solid $main;
+  transition: all 0.5s ease;
+}
+
+.add button:hover {
+  background-color: #158350;
+}
+
+.progress-track {
+  position: absolute;
+  top: 18px;
+  transform: translateY(-50%);
+  width: 100%;
+  height: 4px;
+  border-radius: 5px;
+  background-color: #e7e7e7;
+  right: 0;
+}
+
+.progress-bar {
+  position: absolute;
+  top: 18px;
+  transform: translateY(-50%);
+  height: 4px;
+  border-radius: 5px;
+  background-color: #1dbf73;
+  right: 0;
+  width: 128.453px;
+}
+
+.step .number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: #fff;
+  border: 4px solid #dee0e1;
+  color: #707070;
+  font-size: 15px;
+  box-shadow: 0 0 0 6px #fff;
+  position: relative;
+  margin: auto;
+  margin-bottom: 13px;
+}
+
+.step.closed .number::before {
+  content: "\f00c";
+  background-color: #1dbf73;
+  position: absolute;
+  display: block;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 900;
+}
+
+.step.active .number {
+  border: 0;
+}
+
+.step .title {
+  font-size: 16px;
+  font-weight: 500;
+  color: #707070;
+  display: block;
+  text-align: center;
+}
+
+.contestAbout {
+  background-color: #1dbf73;
+  color: #fff;
+  border-color: #dee0e1;
+  padding: 15px;
+  border-radius: 7px;
+}
+
+.price {
+  color: $main;
+  font-size: 20px;
+}

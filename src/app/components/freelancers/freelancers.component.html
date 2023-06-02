@@ -1,0 +1,270 @@
+<div class="body">
+  <div class="container-fluid">
+    <div class="row mt-5">
+      <!-- divider -->
+      <div
+        class="col-0 col-0 col-sm-0 col-md-0 col-lg-0 col-xl-1 col-xxl-1"
+      ></div>
+      <div
+        class="col-0 col-0-12 col-md-0 col-lg-2 col-xl-2 col-xxl-2 d-none d-sm-none d-md-none d-lg-flex d-flex justify-content-center"
+      >
+        <div class="w-100">
+          <div class="w-100 p-2 mt-2">
+            <button
+              type="button"
+              class="btn btn-success w-100"
+              (click)="goToAddFreelancer()"
+            >
+              <i class="fa-solid fa-users fa-lg ms-2"></i>
+              {{ "Join the Freelancers" | translate }}
+            </button>
+          </div>
+
+          <!-- accordion 1-->
+
+          <div>
+            <div
+              class="accordion col-12 mt-3"
+              id="accordionPanelsStayOpenExample"
+            >
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                  <button
+                    class="accordion-button p-3"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#panelsStayOpen-collapseOne"
+                    aria-expanded="true"
+                    aria-controls="panelsStayOpen-collapseOne"
+                  >
+                    <h6>{{ "Departments" | translate }}</h6>
+                  </button>
+                </h2>
+                <div
+                  id="panelsStayOpen-collapseOne"
+                  class="accordion-collapse collapse show"
+                  aria-labelledby="panelsStayOpen-headingOne"
+                >
+                  <ul class="list-group">
+                    <li class="list-group-item p-3">
+                      {{
+                        "Business and advisory and administrative services"
+                          | translate
+                      }}
+                    </li>
+                    <li class="list-group-item p-3">
+                      {{
+                        "Software, developing websites and applications"
+                          | translate
+                      }}
+                    </li>
+                    <li class="list-group-item p-3">
+                      {{ "Design" | translate }} ,{{ "Video" | translate }} ,{{
+                        "Audio" | translate
+                      }}
+                    </li>
+                    <li class="list-group-item p-3">
+                      {{ "Marketing" | translate }} , {{ "Sales" | translate }}
+                    </li>
+                    <li class="list-group-item p-3">
+                      {{ "Writing ang Content Creation" | translate }}
+                    </li>
+                    <li class="list-group-item p-3">
+                      {{ "Translation and Languages" | translate }}
+                    </li>
+                    <li class="list-group-item p-3">
+                      {{ "Remote assistance" | translate }}
+                    </li>
+                    <li class="list-group-item p-3">
+                      {{ "Others" | translate }}
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- accordion 1-->
+
+          <div>
+            <div
+              class="accordion col-12 mt-3"
+              id="accordionPanelsStayOpenExample"
+            >
+              <!-- <div class="accordion-item">
+                <h2 class="accordion-header" id="panelsStayOpen-headingS">
+                  <button
+                    class="accordion-button p-3"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#panelsStayOpen-Search"
+                    aria-expanded="true"
+                    aria-controls="panelsStayOpen-Search"
+                  >
+                    <h6>{{"Join the Freelancers"|translate}}</h6>
+                  </button>
+                </h2>
+                <div
+                  id="panelsStayOpen-Search"
+                  class="accordion-collapse collapse show"
+                  aria-labelledby="panelsStayOpen-headingS"
+                >
+                  <div class="input-group rounded w-75 p-2 me-4">
+                    <button
+                    type="button"
+                    class="btn btn-success w-100"
+                    (click)="goToAddFreelancer()"
+                  >
+                    <i class="fa-solid fa-users fa-lg ms-2"></i>  {{"Join the Freelancers"|translate}}
+                  </button>
+                  </div>
+                </div>
+              </div> -->
+            </div>
+          </div>
+
+          <!-- accordion 1-->
+
+          <!-- <div>
+            <div
+              class="accordion col-12 mt-3"
+              id="accordionPanelsStayOpenExample"
+            >
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="panelsStayOpen-headingS">
+                  <button
+                    class="accordion-button p-3"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#panelsStayOpen-2"
+                    aria-expanded="true"
+                    aria-controls="panelsStayOpen-2"
+                  >
+                    <h6>{{ "Other Filters" | translate }}</h6>
+                  </button>
+                </h2>
+                <div
+                  id="panelsStayOpen-2"
+                  class="accordion-collapse collapse show"
+                  aria-labelledby="panelsStayOpen-headingS"
+                >
+                  <ul class="list-group">
+                    <li class="list-group-item p-3">
+                      {{ "Connected Now" | translate }}
+                    </li>
+                    <li class="list-group-item p-3">
+                      {{ "Verified Identity" | translate }}
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div> -->
+
+          <!-- accordion 1-->
+
+          <div>
+            <div class="accordion col-12 mt-3" id="OpenExample">
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="panelsStayOpen-headingS">
+                  <button
+                    class="accordion-button p-3"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#panelsStayOpen-2"
+                    aria-expanded="true"
+                    aria-controls="panelsStayOpen-2"
+                  >
+                    <h6>{{ "Rating" | translate }}</h6>
+                  </button>
+                </h2>
+                <div
+                  class="stars"
+                  class="accordion-collapse collapse show p-2 text-center"
+                  aria-labelledby="panelsStayOpen-headingS"
+                >
+                  <div class="stars">
+                    <ngb-rating
+                      (click)="handelTheRating()"
+                      [max]="5"
+                      [(rate)]="starRating"
+                      [readonly]="false"
+                    ></ngb-rating>
+                  </div>
+                  <div>
+                    <ngb-alert
+                      *ngIf="alertForRaring"
+                      [dismissible]="false"
+                      type="success"
+                    >
+                      <strong>{{
+                        "Thanks for your feedback" | translate
+                      }}</strong>
+                    </ngb-alert>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-sm-12 col-md-12 col-lg-10 col-xl-8 col-xxl-8">
+        <div class="p-3 bg-white mx-3" style="border-radius: 10px">
+          <i class="fa-solid fa-users fa-xl ms-2"></i>
+          {{ "Freelancers" | translate }}
+        </div>
+        <!-- div of users -->
+
+        <!-- The Spinner -->
+        <div
+          *ngIf="spinner"
+          class="spinner-border text-success spinner"
+          role="status"
+        >
+          <span class="sr-only">Loading...</span>
+        </div>
+        <div class="d-flex flex-wrap">
+          <!-- USER -->
+          <div
+            class="userCard shadow p-3 mb-5 bg-white rounded"
+            *ngFor="let freelancer of freelancers"
+          >
+            <img class="userImg" [src]="freelancer.img" />
+            <h6>{{ freelancer.name }}</h6>
+            <h6>{{ "Rating" | translate }} : {{ freelancer.rating }}</h6>
+            <!-- rating -->
+            <div class="p-2">
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star"></span>
+              <span class="fa fa-star"></span>
+            </div>
+            <div class="p-2">
+              <p class="about">
+                <i class="fa-solid fa-user"></i> {{ freelancer.title }}
+              </p>
+            </div>
+            <div class="my-2">
+              <p>
+                {{ freelancer.views }} <i class="fa-solid fa-eye"></i>
+                {{ freelancer.likes }}<i class="fa-solid fa-heart mx-1"></i
+                >{{ freelancer.portfolio
+                }}<i class="fa-solid fa-image mx-1"></i>
+              </p>
+              <button
+                class="myBtn m-2 p-2"
+                (click)="getDetailsOfFreelancer(freelancer.id)"
+              >
+                {{ "Personal File" | translate }}
+              </button>
+            </div>
+
+            <!-- ------------------------------------------------------------------------------------------------------------ -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

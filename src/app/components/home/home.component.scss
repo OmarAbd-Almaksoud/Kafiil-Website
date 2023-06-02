@@ -1,0 +1,156 @@
+.accordion-button::before {
+  flex-shrink: 0;
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-left: 0.5rem;
+  content: "";
+  background-image: var(--bs-accordion-btn-active-icon);
+  background-repeat: no-repeat;
+  background-size: 1.25rem;
+  transition: transform 0.2s ease-in-out;
+}
+
+.accordion-button::after {
+  display: none !important;
+}
+.carousel-control-prev,
+.carousel-control-next {
+  background-color: #f1f2f2 !important;
+}
+.searchBtn {
+  margin-right: 5px;
+}
+* {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+}
+body {
+  background-color: #f1f2f2;
+}
+
+img {
+  max-height: 400px !important;
+}
+
+#carouselExampleDark {
+  background-color: #f1f2f2;
+}
+
+.myBtn {
+  background-color: #1dbf73;
+  width: 25%;
+  color: white;
+  padding: 8px;
+  border: 1px #1dbf73 solid;
+  transition-property: all;
+  transition-duration: 0.5s;
+}
+.myBtn:hover {
+  background-color: #147447;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.tab {
+  background-color: #f1f2f2;
+  border: 1px solid rgb(207, 206, 206);
+}
+
+.tab:hover,
+.servicesTabs:hover,
+.navBar:hover,
+.accordion-button:hover {
+  background-color: rgb(207, 206, 206);
+}
+
+.label {
+  width: 85% !important;
+  border: 1px solid rgb(207, 206, 206);
+  border-radius: 10px;
+}
+
+.width-33 {
+  width: 33.5% !important;
+}
+
+.myIcon {
+  border-radius: 50%;
+  height: 45px;
+  width: 45px;
+  background-color: #1dbf73;
+  color: white;
+  font-size: x-large;
+  text-align: center;
+  padding: 2px;
+}
+
+li {
+  margin: 10px;
+  font-size: 17px;
+}
+.servicesTabs {
+  width: 13%;
+  height: 50%;
+  background-color: #e4e3e3;
+  border-radius: 10px;
+  font-size: 16px;
+  margin: 5px;
+  padding: 3px;
+}
+.servicesTabsCon {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 75%;
+  margin-right: 14%;
+  margin-left: 12%;
+  padding: 10px;
+}
+.insideTab {
+  margin-top: 10px;
+  padding-top: 3px;
+}
+.accordion-button {
+  direction: rtl !important;
+}
+.navBar {
+  border: 1px solid rgb(207, 206, 206);
+}
+.nav-link {
+  color: grey !important;
+  font-size: large;
+}
+@media only screen and (max-width: 1000px) {
+  .tt {
+    border: 1px solid rgb(207, 206, 206);
+  }
+}
+@media only screen and (max-width: 1400px) {
+  .servicesTabs {
+    width: 45%;
+    height: 16%;
+    background-color: #e4e3e3;
+    border-radius: 10px;
+    font-size: 10px;
+    margin: 2px;
+    padding: 25px !important;
+  }
+  .servicesTabsCon {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 75%;
+    margin-right: 14%;
+  }
+  .insideTab {
+    margin-top: 0px;
+    padding-top: 0px;
+  }
+}
+// #containerOfTabs{
+//   width:70%;
+//   margin-left: 15%;
+//   margin-right: 15%;
+// }

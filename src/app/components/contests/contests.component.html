@@ -1,0 +1,353 @@
+<section style="background-color: #f1f2f2">
+  <section class="container my-5">
+    <div class="row">
+      <div class="col-12 col-lg-3 d-lg-block d-none">
+        <div class="pluse text-center py-3 mb-3 rounded-2">
+          <a
+            routerLink="/addContest"
+            class="w-100 text-center text-white text-decoration-none"
+          >
+            {{ "addContest" | translate }}
+            <i class="far fa-plus-square mx-3"></i>
+          </a>
+        </div>
+
+        <div class="input-group mb-3">
+          <input
+            type="search"
+            class="input-my-input form-control py-2"
+            placeholder=" {{ 'search' | translate }}"
+            aria-label="search"
+            aria-describedby="basic-search"
+            #search
+          />
+
+          <span class="input-my-text" id="basic-search">
+            <i
+              class="fas fa-search"
+              type="button"
+              (click)="searchByName(search.value)"
+            ></i>
+          </span>
+        </div>
+
+        <div class="accordion mb-3" id="accordionExample">
+          <div class="accordion-item text-muted">
+            <h2 class="accordion-header" id="headingOne">
+              <button
+                class="accordion-button text-muted fw-bold"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseOne"
+                aria-expanded="true"
+                aria-controls="collapseOne"
+              >
+                {{ "Categories" | translate }}
+              </button>
+            </h2>
+            <div
+              id="collapseOne"
+              class="accordion-collapse collapse show"
+              aria-labelledby="headingOne"
+              data-bs-parent="#accordionExample"
+            >
+              <div class="accordion-body p-0">
+                <ng-container
+                  *ngFor="let sect of contestSections; let i = index"
+                >
+                  <div
+                    type="button"
+                    (click)="ChangeContestSectionId(sect.id)"
+                    class="right p-3"
+                  >
+                    <i class="fas fa-paint-brush"></i>
+                    {{ sect.name }}
+                  </div>
+                </ng-container>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <a href="https://kafiil.com/youtube">
+            <img
+              src="https://kafiil.com/img/youtube-initiative/2.jpg"
+              style="width: 100%"
+            />
+          </a>
+        </div>
+      </div>
+
+      <div class="col-12 col-lg-9">
+        <div class="d-lg-none d-flex justify-content-between">
+          <div class="pluse text-center px-3 py-2 mb-3 rounded-2">
+            <a
+              href="/addContest"
+              class="w-100 text-center text-white text-decoration-none"
+            >
+              <i class="far fa-plus-square mx-3"></i>
+              {{ "addContest" | translate }}
+            </a>
+          </div>
+
+          <button
+            class="canvasBtn"
+            type="button"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasRight"
+            aria-controls="offcanvasRight"
+          >
+            <i class="fas fa-sliders-h"></i>
+          </button>
+        </div>
+
+        <div class="filter bg-white rounded-2 mb-3">
+          <div class="type-radio">
+            <label class="custom-radio">
+              <input
+                type="radio"
+                name="filter"
+                class="d-none open-filter"
+                value="all"
+                checked
+                (click)="GetAllContests()"
+              />
+              <i></i>
+              {{ "all" | translate }}
+            </label>
+            <label class="custom-radio">
+              <input
+                type="radio"
+                name="filter"
+                class="d-none open-filter"
+                value="open"
+                (click)="ChangeContestCompletedStatus()"
+              />
+              <i></i>
+              {{ "open" | translate }}
+            </label>
+          </div>
+        </div>
+
+        <div>
+          <div class="row" id="row">
+            <ng-container *ngFor="let cont of contestArr; let i = index">
+              <div class="item col-12 col-sm-6 col-lg-4">
+                <div class="competitions-view text-muted">
+                  <div>
+                    <div class="head">
+                      <div class="d-flex align-items-center">
+                        <a class="text-decoration-none bg-transparant" href="#">
+                          <img [src]="cont.userImg" alt="" />
+                        </a>
+                        <div>
+                          <a
+                            class="text-decoration-none text-black mx-2"
+                            href="#"
+                          >
+                            {{ cont.userName }}
+                          </a>
+                        </div>
+                      </div>
+                      <div class="left">
+                        <div class="dropdown icon-drop-left">
+                          <button
+                            type="button"
+                            id="dropdownMenuButton"
+                            data-toggle="dropdown"
+                            aria-haspopup="true"
+                            aria-expanded="false"
+                          >
+                            <i class="fas fa-ellipsis-v"></i>
+                          </button>
+                          <div
+                            class="dropdown-menu"
+                            aria-labelledby="dropdownMenuButton"
+                          >
+                            <a
+                              class="dropdown-item report-item"
+                              reportable_id="159"
+                              reportable_type="contest"
+                              href="#"
+                              ><i class="far fa-flag"></i> بلاغ</a
+                            >
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="inner">
+                      <p class="text-muted">
+                        {{ cont.sectionName }}
+                      </p>
+                      <p>
+                        <a
+                          type="button"
+                          class="text-decoration-none text-black"
+                          (click)="openContestDetails(cont.id)"
+                          >{{ cont.title }}</a
+                        >
+                      </p>
+                    </div>
+
+                    <div>
+                      <div
+                        class="d-flex justify-content-between align-items-center px-3"
+                      >
+                        <p>
+                          <span
+                            class="contest-status-badge badge bg-success"
+                            [ngStyle]="{
+                              display:
+                                cont.completed == false ? 'none' : 'block'
+                            }"
+                          >
+                            <i class="fas fa-check"></i>
+                            مكتمل
+                          </span>
+
+                          <span
+                            class="contest-status-badge badge bg-warning text-black"
+                            [ngStyle]="{
+                              display:
+                                cont.completed == false ? 'block' : 'none'
+                            }"
+                          >
+                            <i class="fas fa-bullhorn"></i>
+                            بإنتظار إختيار الفائز
+                          </span>
+                        </p>
+                        <p class="price">
+                          <i class="fas fa-trophy"></i> {{ cont.firstWinner }} $
+                        </p>
+                      </div>
+
+                      <div class="details px-3">
+                        <span class="detail">
+                          <i class="fas fa-cloud-upload-alt"></i>
+                          {{ cont.Posts }}
+                        </span>
+                        <span class="detail">
+                          <i class="far fa-eye"></i>{{ cont.Views }}
+                        </span>
+                        <span class="detail">
+                          <i class="far fa-comment-dots"></i> {{ cont.comment }}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- offcanvas body -->
+  <div
+    class="offcanvas offcanvas-end"
+    tabindex="-1"
+    id="offcanvasRight"
+    aria-labelledby="offcanvasRightLabel"
+  >
+    <div class="offcanvas-header">
+      <button class="canvasTitle offcanvas-title" id="offcanvasRightLabel">
+        {{ "Show_results" | translate }}
+      </button>
+      <button
+        type="button"
+        class="back fw-bold"
+        data-bs-dismiss="offcanvas"
+        aria-label="Close"
+      >
+        {{ "back" | translate }}
+        <i class="fas fa-arrow-right"></i>
+      </button>
+    </div>
+    <div class="offcanvas-body">
+      <div class="pluse text-center py-3 mb-3 rounded-2">
+        <a
+          href="/addContest"
+          class="w-100 text-center text-white text-decoration-none"
+        >
+          {{ "addContest" | translate }}
+          <i class="far fa-plus-square mx-3"></i>
+        </a>
+      </div>
+
+      <div class="input-group mb-3">
+        <input
+          type="search"
+          class="input-my-input form-control py-2"
+          placeholder=" {{ 'search' | translate }}"
+          aria-label="search"
+          aria-describedby="basic-search"
+          #search
+        />
+
+        <span class="input-my-text" id="basic-search">
+          <i
+            class="fas fa-search"
+            type="button"
+            (click)="searchByName(search.value)"
+          ></i>
+        </span>
+      </div>
+
+      <div class="accordion mb-3" id="accordionExample">
+        <div class="accordion-item text-muted">
+          <h2 class="accordion-header" id="headingOne">
+            <button
+              class="accordion-button text-muted fw-bold"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#collapseOne"
+              aria-expanded="true"
+              aria-controls="collapseOne"
+            >
+              {{ "Categories" | translate }}
+            </button>
+          </h2>
+          <div
+            id="collapseOne"
+            class="accordion-collapse collapse show"
+            aria-labelledby="headingOne"
+            data-bs-parent="#accordionExample"
+          >
+            <div class="accordion-body p-0">
+              <ng-container *ngFor="let sect of contestSections; let i = index">
+                <div
+                  type="button"
+                  (click)="ChangeContestSectionId(sect.id)"
+                  class="right p-3"
+                >
+                  <i class="fas fa-paint-brush"></i>
+                  {{ sect.name }}
+                </div>
+              </ng-container>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <a href="https://kafiil.com/youtube">
+          <img
+            src="https://kafiil.com/img/youtube-initiative/2.jpg"
+            style="width: 100%"
+          />
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+<ngx-spinner
+  bdColor="#1dcf73"
+  size="medium"
+  color="#fff"
+  [fullScreen]="true"
+  size="large"
+  type="line-scale-pulse-out"
+></ngx-spinner>

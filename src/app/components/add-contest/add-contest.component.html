@@ -1,0 +1,233 @@
+<div class="container d-flex mt-2 justify-content-between">
+  <div class="col-12 col-lg-8 rounded border mx-4 bg-white mb-5">
+    <div class="add-service-header">
+      <p class="title">
+        <i class="far fa-list-alt"></i>
+        {{ "addContest" | translate }}
+      </p>
+    </div>
+    <button
+      class="btn btn-outline-warning float-start m-3"
+      (click)="restoreDraft()"
+      *ngIf="contestDraft != null"
+    >
+    {{ "Retrieving_draft" | translate }}
+    <i class="fa-solid fa-arrow-rotate-left px-2"></i>
+    </button>
+    <div class="clearfix"></div>
+    <div class="p-3">
+      <form action="" [formGroup]="contestform">
+        <div class="mb-3">
+          <label for="title" class="form-label"> {{ "title" | translate }}</label>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="title"
+            id="title"
+            name="title"
+            placeholder='{{ "title"  | translate }}' 
+            [class.is-valid]="contestform.get('title')?.valid"
+            [class.is-invalid]="
+              contestform.get('title')?.invalid &&
+              contestform.get('title')?.dirty
+            "
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="description" class="form-label"> {{ "description" | translate }} :</label>
+          <textarea
+            class="form-control"
+            id="description"
+            name="description"
+            formControlName="description"
+            rows="7"
+            placeholder='{{ "description" | translate }} '
+            [class.is-valid]="contestform.get('description')?.valid"
+            [class.is-invalid]="
+              contestform.get('description')?.invalid &&
+              contestform.get('description')?.dirty
+            "
+          ></textarea>
+        </div>
+
+        <div class="mb-3">
+          <label for="conditions" class="form-label">{{ "conditions" | translate }}  :</label>
+          <textarea
+            class="form-control"
+            id="conditions"
+            name="conditions"
+            formControlName="conditions"
+            rows="7"
+            placeholder='{{ "conditions" | translate }}'
+          ></textarea>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <label for="winnersNum" class="form-label">{{ "winnersNumber" | translate }}</label>
+            <select
+              id="winnersNum"
+              class="form-select"
+              formControlName="winnersNum"
+              [class.is-valid]="contestform.get('winnersNum')?.valid"
+              [class.is-invalid]="
+                contestform.get('winnersNum')?.invalid &&
+                contestform.get('winnersNum')?.dirty
+              "
+            >
+              <option selected disabled>{{ "selectWinnersNumber" | translate }}</option>
+              <option value="فائز واحد">فائز واحد</option>
+              <option value="فائزين">فائزين</option>
+              <option value="ثلاث فائزين">ثلاث فائزين</option>
+            </select>
+          </div>
+          <div class="col">
+            <label for="firstWinner" class="form-label">{{ "Prizevalue" | translate }} :</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="firstWinner"
+              id="firstWinner"
+              name="firstWinner"
+              placeholder='{{ "Prizevalue" | translate }}'
+              [class.is-valid]="contestform.get('firstWinner')?.valid"
+              [class.is-invalid]="
+                contestform.get('firstWinner')?.invalid &&
+                contestform.get('firstWinner')?.dirty
+              "
+            />
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <label for="contestDuration" class="form-label"
+              >{{ "contestTime" | translate }}:</label
+            >
+            <select
+              id="contestDuration"
+              class="form-select"
+              formControlName="contestDuration"
+              [class.is-valid]="contestform.get('contestDuration')?.valid"
+              [class.is-invalid]="
+                contestform.get('contestDuration')?.invalid &&
+                contestform.get('contestDuration')?.dirty
+              "
+            >
+              <option selected disabled>{{ "chooseContestTime" | translate }}</option>
+              <option value="شهر">شهر</option>
+              <option value="شهرين">شهرين</option>
+              <option value="ثلاث شهور">ثلاث شهور</option>
+            </select>
+          </div>
+          <div class="col">
+            <label for="deliveryDuration" class="form-label"
+              > {{ "deliveryDuration" | translate }}:</label
+            >
+            <select
+              id="deliveryDuration"
+              class="form-select"
+              formControlName="deliveryDuration"
+              [class.is-valid]="contestform.get('deliveryDuration')?.valid"
+              [class.is-invalid]="
+                contestform.get('deliveryDuration')?.invalid &&
+                contestform.get('deliveryDuration')?.dirty
+              "
+            >
+              <option selected disabled>{{ "chooseDeliveryDuration" | translate }}</option>
+              <option value="شهر">شهر</option>
+              <option value="شهرين">شهرين</option>
+              <option value="ثلاث شهور">ثلاث شهور</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <label for="sectionId" class="form-label">{{ "section" | translate }}</label>
+            <select
+              name="sectionId"
+              id="sectionId"
+              formControlName="sectionId"
+              class="form-control"
+              [class.is-valid]="contestform.get('sectionId')?.valid"
+              [class.is-invalid]="
+                contestform.get('sectionId')?.invalid &&
+                contestform.get('sectionId')?.dirty
+              "
+            >
+              <option value="0" selected disabled>{{ "chooseSection" | translate }}</option>
+              <option
+                *ngFor="let sect of contestSections"
+                [value]="sect.id"
+                selectedSectionID="sect.id"
+              >
+                {{ sect.name }}
+              </option>
+            </select>
+          </div>
+
+          <div class="col">
+            <label for="skills" class="form-label"> {{ "skills" | translate }}</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="skills"
+              id="skills"
+              name="skills"
+              placeholder='{{ "addContest" | translate }}'
+            />
+          </div>
+        </div>
+
+        <button
+          type="submit"
+          class="btn btn-success rounded submitbtn"
+          (click)="addContest()"
+        >
+        {{ "addContest" | translate }}
+        </button>
+
+        <button class="btn btn-outline-dark" (click)="saveDraft()">
+          {{ "SavDraft" | translate }}
+          <i class="fa-regular fa-floppy-disk px-2"></i>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <div class="col-lg-4 d-none d-lg-flex flex-column">
+    <span class="fs-4 my-3">{{ "PostContestSponsor" | translate }}</span>
+    <iframe
+      width="440"
+      height="300"
+      src="https://www.youtube.com/embed/o08tmeovA2Q"
+      title="YouTube video player"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen
+    ></iframe>
+    <p class="text-black-50 my-4">
+      {{ "KafeelPlatform" | translate }}
+    </p>
+    <h5><span class="fas fa-lightbulb"></span>   {{ "TipsAdding" | translate }}</h5>
+    <ul class="px-3 tips-content">
+      <li> {{ "AddClear" | translate }}</li>
+      <li>{{  "ExplainRequirements" | translate }}</li>
+      <li>{{ "SelectCompetition" | translate }} </li>
+      <li>{{ "AddConditions" | translate }}</li>
+      <li>{{ "ChoosBudget" | translate }}</li>
+    </ul>
+    <div class="col-12 px-0 mb-4">
+      <h5>
+        <span class="fas fa-shield-alt" style="color: #1dbf73">
+          {{ "guarantorGuarantees" | translate }}
+         </span>
+      </h5>
+      <div class="col-12 px-0 tips-content">
+        {{ "sponsorPlatformProvides" | translate }}
+      </div>
+    </div>
+  </div>
+</div>

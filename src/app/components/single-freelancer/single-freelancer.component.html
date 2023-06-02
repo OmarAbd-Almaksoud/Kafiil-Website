@@ -1,0 +1,258 @@
+<div class="body">
+  <!-- <div
+    class="dropdown d-block d-sm-block d-md-block d-lg-none d-xl-none d-xxl-none"
+  >
+    <button
+      id="dropDown"
+      class="btn dropdown-toggle p-2 m-2"
+      type="button"
+      id="dropdownMenuButton1"
+      data-bs-toggle="dropdown"
+      aria-expanded="false"
+    >
+      <i class="fa-solid fa-bars"></i>
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+      <li><a class="dropdown-item text-center" href="#">الاقسام</a></li>
+      <li><a class="dropdown-item text-center" href="#">المهارات</a></li>
+      <li><a class="dropdown-item text-center" href="#">مرشحات أخرى</a></li>
+    </ul>
+  </div> -->
+  <div class="container-fluid">
+    <div class="row mt-5">
+      <!-- divider -->
+      <div
+        class="col-0 col-0 col-sm-0 col-md-0 col-lg-0 col-xl-1 col-xxl-1"
+      ></div>
+      <div
+        class="col-0 col-0-12 col-md-0 col-lg-2 col-xl-2 col-xxl-2 d-none d-sm-none d-md-none d-lg-flex d-flex justify-content-center"
+      >
+        <div class="w-100">
+          <div class="input-group rounded w-100 p-2 mt-2">
+            <div class="w-100 p-2 mt-2">
+              <button
+                type="button"
+                class="btn btn-success w-100"
+                (click)="goToAddFreelancer()"
+              >
+                <i class="fa-solid fa-users fa-lg ms-2"></i>
+                {{ "Join the Freelancers" | translate }}
+              </button>
+            </div>
+          </div>
+
+          <!-- accordion 1-->
+
+          <div>
+            <div
+              class="accordion col-12 mt-3"
+              id="accordionPanelsStayOpenExample"
+            >
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                  <button
+                    class="accordion-button p-3"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#panelsStayOpen-collapseOne"
+                    aria-expanded="true"
+                    aria-controls="panelsStayOpen-collapseOne"
+                  >
+                    <h6>{{ "Departments" | translate }}</h6>
+                  </button>
+                </h2>
+                <div
+                  id="panelsStayOpen-collapseOne"
+                  class="accordion-collapse collapse show"
+                  aria-labelledby="panelsStayOpen-headingOne"
+                >
+                  <ul class="list-group">
+                    <li class="list-group-item p-3">
+                      {{
+                        "Business and advisory and administrative services"
+                          | translate
+                      }}
+                    </li>
+                    <li class="list-group-item p-3">
+                      {{
+                        "Software, developing websites and applications"
+                          | translate
+                      }}
+                    </li>
+                    <li class="list-group-item p-3">
+                      {{ "Design" | translate }} ,{{ "Video" | translate }} ,{{
+                        "Audio" | translate
+                      }}
+                    </li>
+                    <li class="list-group-item p-3">
+                      {{ "Marketing" | translate }} , {{ "Sales" | translate }}
+                    </li>
+                    <li class="list-group-item p-3">
+                      {{ "Writing ang Content Creation" | translate }}
+                    </li>
+                    <li class="list-group-item p-3">
+                      {{ "Translation and Languages" | translate }}
+                    </li>
+                    <li class="list-group-item p-3">
+                      {{ "Remote assistance" | translate }}
+                    </li>
+                    <li class="list-group-item p-3">
+                      {{ "Others" | translate }}
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- accordion 1-->
+
+          <div>
+            <div
+              class="accordion col-12 mt-3"
+              id="accordionPanelsStayOpenExample"
+            >
+              <!-- <div class="accordion-item">
+                <h2 class="accordion-header" id="panelsStayOpen-headingS">
+                  <button
+                    class="accordion-button p-3"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#panelsStayOpen-Search"
+                    aria-expanded="true"
+                    aria-controls="panelsStayOpen-Search"
+                  >
+                    <h6>المهارات</h6>
+                  </button>
+                </h2>
+                <div
+                  id="panelsStayOpen-Search"
+                  class="accordion-collapse collapse show"
+                  aria-labelledby="panelsStayOpen-headingS"
+                >
+                  <div class="input-group rounded w-75 p-2 me-4">
+                    <input
+                      type="search"
+                      class="form-control rounded"
+                      placeholder="ابحث ..."
+                      aria-label="Search"
+                      aria-describedby="search-addon"
+                    />
+                  </div>
+                </div>
+              </div> -->
+            </div>
+          </div>
+
+          <!-- accordion 1-->
+
+          <div>
+            <div class="accordion col-12 mt-3" id="OpenExample">
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="panelsStayOpen-headingS">
+                  <button
+                    class="accordion-button p-3"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#panelsStayOpen-2"
+                    aria-expanded="true"
+                    aria-controls="panelsStayOpen-2"
+                  >
+                    <h6>{{ "Rating" | translate }}</h6>
+                  </button>
+                </h2>
+                <div
+                  class="stars"
+                  class="accordion-collapse collapse show p-2 text-center"
+                  aria-labelledby="panelsStayOpen-headingS"
+                >
+                  <div class="stars">
+                    <ngb-rating
+                      (click)="handelTheRating()"
+                      [max]="5"
+                      [(rate)]="starRating"
+                      [readonly]="false"
+                    ></ngb-rating>
+                  </div>
+                  <div>
+                    <ngb-alert
+                      *ngIf="alertForRaring"
+                      [dismissible]="false"
+                      type="success"
+                    >
+                      <strong>{{
+                        "Thanks for your feedback" | translate
+                      }}</strong>
+                    </ngb-alert>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-sm-12 col-md-12 col-lg-10 col-xl-8 col-xxl-8">
+        <div class="p-3 bg-white mx-3" style="border-radius: 10px">
+          <i class="fa-solid fa-user fa-xl ms-2"></i>
+          {{ "Freelancer" | translate }}
+        </div>
+
+        <div>
+          <!-- USER -->
+          <div class="userCard shadow p-3 mb-5 bg-white rounded">
+            <!-- The Spinner -->
+            <div
+              *ngIf="spinner"
+              class="spinner-border text-success spinner"
+              role="status"
+            >
+              <span class="sr-only">Loading...</span>
+            </div>
+            <img class="userImg" [src]="Freelancer?.img" />
+            <h6 class="my-4">
+              {{ "Name" | translate }} : {{ Freelancer?.name }}
+            </h6>
+            <h6 class="my-2">
+              {{ "Rating" | translate }} : {{ Freelancer?.rating }}
+            </h6>
+            <!-- rating -->
+            <div class="p-2 my-2">
+              <span class="fa fa-star"></span>
+              <span class="fa fa-star"></span>
+              <span class="fa fa-star"></span>
+              <span class="fa fa-star"></span>
+              <span class="fa fa-star"></span>
+            </div>
+            <div class="p-2 my-2">
+              <p class="about">
+                <i class="fa-solid fa-user mx-2"></i>{{ "Job" | translate }} :
+                {{ Freelancer?.title }}
+              </p>
+            </div>
+            <div class="my-2">
+              <p class="my-2">
+                <i class="fa-solid fa-eye"></i> {{ "Views" | translate }} :
+                {{ Freelancer?.views }}
+
+                <i class="fa-solid fa-heart ms-1 me-3"></i
+                >{{ "Likes" | translate }} : {{ Freelancer?.likes }}
+
+                <i class="fa-solid fa-image ms-1 me-3"></i
+                >{{ "Projects" | translate }} :
+                {{ Freelancer?.portfolio }}
+              </p>
+              <button class="myBtn m-2 p-2" (click)="backToFreelancers()">
+                {{ "Back to Freelancers" | translate }}
+              </button>
+              <button class="myBtn m-2 p-2" (click)="backToHomepage()">
+                {{ "HomePage" | translate }}
+              </button>
+            </div>
+            <!-- ------------------------------------------------------------------------------------------------------------ -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

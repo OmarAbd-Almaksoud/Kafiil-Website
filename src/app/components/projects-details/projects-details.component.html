@@ -1,0 +1,349 @@
+<section class="container my-5">
+  <div class="project-info-head">
+    <div class="d-flex">
+      <img src="{{ project.img }}" alt="" />
+
+      <div>
+        <h4 class="mx-2">{{ project.title }}</h4>
+        <div class="mt-3">
+          <span>
+            <i class="fas fa-align-justify mx-2" style="color: #1dbf73"></i>
+            {{ project.catId }}</span
+          >
+          <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+          <span
+            ><i class="fa-solid fa-clock mx-1" style="color: #1dbf73"></i>
+            {{ project.time }}</span
+          >
+        </div>
+      </div>
+    </div>
+
+    <div class="left">
+      <div class="dropdown icon-drop-left">
+        <button
+          class=""
+          type="button"
+          id="dropdownMenuButton"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          <i class="fas fa-ellipsis-v"></i>
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a
+            class="needs_auth dropdown-item report-item"
+            reportable_id="4613"
+            reportable_type="project"
+            ><i class="far fa-flag"></i> بلاغ
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12 col-lg-4 d-lg-block d-none">
+      <div class="accordion mb-3" id="accordionExample">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingOne">
+            <button
+              class="accordion-button text-black fw-bold"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#collapseOne"
+              aria-expanded="true"
+              aria-controls="collapseOne"
+            >
+              <i class="fas fa-user mx-3"></i>
+              {{ "Project_Owner" | translate }}
+            </button>
+          </h2>
+          <div
+            id="collapseOne"
+            class="accordion-collapse collapse show"
+            aria-labelledby="headingOne"
+            data-bs-parent="#accordionExample"
+          >
+            <div class="accordion-body p-0">
+              <div class="block-body">
+                <div class="">
+                  <div class="d-flex">
+                    <a class="text-black text-decoration-none">
+                      <img
+                        src="https://kafiil.com/storage/images/users/9558529a-9ff7-40c2-945f-66b435009f0d.jpg"
+                        alt=""
+                      />
+                    </a>
+                    <div>
+                      <a class="text-muted text-decoration-none d-block">
+                        {{ project.personName }}
+                      </a>
+                      <span class="text text-muted">
+                        <i class="fas fa-map-marker-alt ms-2"></i>
+                        {{ project.country }}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion mb-3" id="accordionTwo">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingTwo">
+            <button
+              class="accordion-button text-black fw-bold"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#collapseTwo"
+              aria-expanded="true"
+              aria-controls="collapseTwo"
+            >
+              <i class="fas fa-list-alt mx-3"></i>
+              {{ "Project_Info" | translate }}
+            </button>
+          </h2>
+          <div
+            id="collapseTwo"
+            class="accordion-collapse collapse show"
+            aria-labelledby="headingTwo"
+            data-bs-parent="#accordionTwo"
+          >
+            <div class="accordion-body p-0">
+              <div class="block-body-two text-muted">
+                <div class="d-flex justify-content-between py-3">
+                  <div>
+                    <i class="fas fa-clock mx-2"></i>
+                    {{ "Publishing_Date" | translate }}
+                  </div>
+                  <div>{{ project.publishData }}</div>
+                </div>
+
+                <div class="dark d-flex justify-content-between py-3">
+                  <div>
+                    <i class="fas fa-money-bill-alt mx-2"></i>
+                    {{ "Budget" | translate }}
+                  </div>
+                  <div>{{ project.budget }}</div>
+                </div>
+
+                <div class="d-flex justify-content-between py-3">
+                  <div>
+                    <i class="fas fa-clock mx-2"></i>
+                    {{ "Project_Duration" | translate }}
+                  </div>
+                  <div>{{ project.durationproject }}</div>
+                </div>
+
+                <div class="dark d-flex justify-content-between py-3">
+                  <div>
+                    <i class="fas fa-suitcase mx-2"></i>
+                    {{ "Bids_Average" | translate }}
+                  </div>
+                  <div>{{ project.offers }}</div>
+                </div>
+
+                <!-- <div class="d-flex justify-content-between py-3" [hidden]="project.Averageoffers === ''" > -->
+                <div
+                  class="d-flex justify-content-between py-3"
+                  *ngIf="project.Averageoffers === ''"
+                >
+                  <div>
+                    <i class="fas fa-money-bill-alt"></i>
+                    {{ "Bids_Average" | translate }}
+                  </div>
+                  <div>{{ project.Averageoffers }}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion mb-3" id="accordionThree">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingThree">
+            <button
+              class="accordion-button text-black fw-bold"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#collapseThree"
+              aria-expanded="true"
+              aria-controls="collapseThree"
+            >
+              <i class="fas fa-share-alt mx-3"></i>
+              {{ "Share_And_Earn" | translate }}
+            </button>
+          </h2>
+          <div
+            id="collapseThree"
+            class="accordion-collapse collapse show"
+            aria-labelledby="headingThree"
+            data-bs-parent="#accordionThree"
+          >
+            <div class="accordion-body p-0">
+              <div>
+                <div class="">
+                  <div class="p-4">
+                    <div
+                      class="d-flex align-items-center justify-content-between flex-wrap"
+                    >
+                      <div class="share-box" title="شارك على  لينكد إن">
+                        <a href="https://www.linkedin.com/" target="_blank">
+                          <span class="icon" style="color: #0e76a8"
+                            ><i class="fab fa-linkedin-in"></i
+                          ></span>
+                        </a>
+                      </div>
+                      <div class="share-box" title="شارك على  فيسبوك">
+                        <a href="https://www.facebook.com/" target="_blank">
+                          <span class="icon" style="color: #4267b2"
+                            ><i class="fab fa-facebook"></i
+                          ></span>
+                        </a>
+                      </div>
+                      <div class="share-box" title="شارك على  واتس أب">
+                        <a href="https://api.whatsapp.com/" target="_blank">
+                          <span class="icon" style="color: #25d366"
+                            ><i class="fab fa-whatsapp"></i
+                          ></span>
+                        </a>
+                      </div>
+                      <div class="share-box" title="شارك على  تويتر">
+                        <a href="https://twitter.com/" target="_blank">
+                          <span class="icon" style="color: #00acee"
+                            ><i class="fab fa-twitter"></i
+                          ></span>
+                        </a>
+                      </div>
+                      <!-- <div class="share-box" title="نسخ إلى الحافظة">
+                        <a href="">
+                          <span class="icon" style="color: black"
+                            ><i class="far fa-copy"></i
+                          ></span>
+                        </a>
+                      </div> -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-lg-8">
+      <!-- <div class="filter">
+        <div class="p-4">
+          <div
+            class="d-flex justify-content-around align-items-center position-relative"
+          >
+            <span class="progress-track"></span>
+            <span class="progress-bar"></span>
+            <div class="step position-relative current active closed">
+              <span class="number"> 1 </span>
+              <span class="title"> {{'Receiving_Offers_Stage'|translate}}</span>
+            </div>
+            <div class="step position-relative">
+              <span class="number"> 2 </span>
+              <span class="title"> {{'Execution_Stage'|translate}}</span>
+            </div>
+            <div class="step position-relative">
+              <span class="number"> 3 </span>
+              <span class="title"> {{'Delivery_Stage'|translate}} </span>
+            </div>
+          </div>
+        </div>
+      </div> -->
+
+      <div class="filter">
+        <div class="head text-black fw-bold">
+          <i class="fas fa-list-alt ms-3"></i>
+          {{ "Project_Details" | translate }}
+        </div>
+        <div class="text-muted">
+          <p>
+            {{ project.discription }}
+          </p>
+        </div>
+      </div>
+
+      <!-- <div class="filter">
+        <div class="head text-black fw-bold">
+          <i class="far fa-star ms-3"></i>
+          المهارات المطلوبة
+        </div>
+        <div>
+          <p class="body">
+            <i class="fas fa-tag"></i>
+            الانجليزية
+          </p>
+        </div>
+      </div> -->
+
+      <!-- <div class="last-filter">
+        <div class="head text-black fw-bold">
+          <i class="fas fa-suitcase ms-3"></i>
+          {{ project.offers }}
+        </div>
+
+        <div class="inner-row" id="row">
+           <ng-container *ngFor="let proj of project; let i = index">
+            <div>
+              <div class="d-flex">
+                <a href="#" class="text-black text-decoration-none">
+                  <img [src]="proj.img" alt="" />
+                </a>
+                <div>
+                  <div class="d-flex">
+                    <span class="text-muted">
+                      <span>
+                        {{ proj.hintText }}
+                      </span>
+                      {{ proj.text }}
+                    </span>
+                    <span class="mx-2">
+                      <i class="fas fa-star text-muted"></i>
+                      <i class="fas fa-star text-muted"></i>
+                      <i class="fas fa-star text-muted"></i>
+                      <i class="fas fa-star text-muted"></i>
+                      <i class="fas fa-star text-muted"></i>
+                    </span>
+                    <a href="#" class="text-black text-decoration-none d-block">
+                      {{ proj.name }}
+                    </a>
+                  </div>
+                  <span class="text-muted">
+                    <span>
+                      <i class="fas fa-briefcase"></i>
+                      {{ proj.work }}
+                    </span>
+                    <span class="text-time">
+                      <i class="fas fa-clock text-muted"></i>
+                      {{ proj.time }}
+                    </span>
+                  </span>
+                </div>
+              </div>
+              <div>
+                <p>
+                  {{ proj.parag }}
+                </p>
+              </div>
+            </div>
+          </ng-container> 
+        </div>
+      </div> -->
+
+      <!-- <div class="add mb-3">
+        <button class="form-control">{{"Add_Your_Bid"|translate}}</button>
+      </div> -->
+    </div>
+  </div>
+</section>

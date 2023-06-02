@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <body>
+    <!-- content -->
+    <a
+      href="./services/{{ carddata.uid }}"
+      class="text-decoration-none text-dark"
+    >
+      <div class="card">
+        <img [src]="carddata.data.mainImg" class="card-img-top" alt="..." />
+        <div class="card-body py-1 col-12">
+          <span class="card-text">
+            {{ carddata.data.title }}
+          </span>
+        </div>
+        <div class="service-info px-3 py-1">
+          <div class="rates d-flex justify-content-between">
+            <div class="details">
+              <span class="rate text-warning">
+                <i class="fas fa-star"></i>
+                {{ carddata.data.rating }}
+                <span class="text-secondary">(14)</span>
+              </span>
+              <span class="cart text-secondary">
+                <i class="fas fa-shopping-cart p-2"></i>
+                {{ carddata.data.orderscount }}
+              </span>
+            </div>
+            <span class="badge" *ngIf="carddata.data.isfeatured">موصي به</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="down d-flex justify-content-between align-items-center">
+            <div class="owner d-flex justify-content-between">
+              <a href="https://kafiil.com/u/minutesuae" class="img">
+                <span class="status"></span>
+                <img [src]="userinfo.imgUrl" alt="" />
+              </a>
+              <div class="owner-info ps-2 d-flex justify-content-between">
+                <a href="https://kafiil.com/u/minutesuae" class="name">
+                  <!-- {{ user | json }} -->
+                  {{ userinfo.fullname }}
+                </a>
+                <span class="type"> </span>
+              </div>
+            </div>
+            <span class="price text-success fw-bold">
+              {{ carddata.data.price }}$
+            </span>
+          </div>
+        </div>
+      </div>
+    </a>
+  </body>
+</html>

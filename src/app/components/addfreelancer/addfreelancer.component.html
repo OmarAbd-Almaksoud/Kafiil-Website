@@ -1,0 +1,324 @@
+<div class="body">
+  <div class="container-fluid">
+    <div class="row mt-5">
+      <!-- divider -->
+      <div
+        class="col-0 col-0 col-sm-0 col-md-0 col-lg-0 col-xl-1 col-xxl-1"
+      ></div>
+      <div
+        class="col-0 col-0-12 col-md-0 col-lg-2 col-xl-2 col-xxl-2 d-none d-sm-none d-md-none d-lg-flex d-flex justify-content-center"
+      >
+        <div class="w-100">
+          <!-- accordion 1-->
+          <div>
+            <button
+              class="btn btn-success col-12 mt-3"
+              routerLink="/freelancers"
+            >
+              <i class="fa-solid fa-users fa-lg ms-2"></i>
+              {{ "Back to Freelancers" | translate }}
+            </button>
+          </div>
+
+          <div>
+            <div
+              class="accordion col-12 mt-3"
+              id="accordionPanelsStayOpenExample"
+            >
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                  <button
+                    class="accordion-button p-3"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#panelsStayOpen-collapseOne"
+                    aria-expanded="true"
+                    aria-controls="panelsStayOpen-collapseOne"
+                  >
+                    <h6>{{ "Departments" | translate }}</h6>
+                  </button>
+                </h2>
+                <div
+                  id="panelsStayOpen-collapseOne"
+                  class="accordion-collapse collapse show"
+                  aria-labelledby="panelsStayOpen-headingOne"
+                >
+                  <ul class="list-group">
+                    <li class="list-group-item p-3">
+                      {{
+                        "Business and advisory and administrative services"
+                          | translate
+                      }}
+                    </li>
+
+                    <li class="list-group-item p-3">
+                      {{
+                        "Software, developing websites and applications"
+                          | translate
+                      }}
+                    </li>
+
+                    <li class="list-group-item p-3">
+                      {{ "Design" | translate }} ,{{ "Video" | translate }} ,{{
+                        "Audio" | translate
+                      }}
+                    </li>
+                    <li class="list-group-item p-3">
+                      {{ "Marketing" | translate }} , {{ "Sales" | translate }}
+                    </li>
+                    <li class="list-group-item p-3">
+                      {{ "Writing ang Content Creation" | translate }}
+                    </li>
+                    <li class="list-group-item p-3">
+                      {{ "Translation and Languages" | translate }}
+                    </li>
+                    <li class="list-group-item p-3">
+                      {{ "Remote assistance" | translate }}
+                    </li>
+                    <li class="list-group-item p-3">
+                      {{ "Others" | translate }}
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- accordion 1-->
+
+          <!-- accordion 1-->
+
+          <!-- <div>
+            <div
+              class="accordion col-12 mt-3"
+              id="accordionPanelsStayOpenExample"
+            >
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="panelsStayOpen-headingS">
+                  <button
+                    class="accordion-button p-3"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#panelsStayOpen-2"
+                    aria-expanded="true"
+                    aria-controls="panelsStayOpen-2"
+                  >
+                    <h6>{{ "Other Filters" | translate }}</h6>
+                  </button>
+                </h2>
+                <div
+                  id="panelsStayOpen-2"
+                  class="accordion-collapse collapse show"
+                  aria-labelledby="panelsStayOpen-headingS"
+                >
+                  <ul class="list-group">
+                    <li class="list-group-item p-3">
+                      {{ "Connected Now" | translate }}
+                    </li>
+                    <li class="list-group-item p-3">
+                      {{ "Verified Identity" | translate }}
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div> -->
+
+          <!-- accordion 1-->
+
+          <div></div>
+        </div>
+      </div>
+
+      <div class="col-12 col-sm-12 col-md-12 col-lg-10 col-xl-8 col-xxl-8">
+        <div class="p-3 bg-white mx-3" style="border-radius: 10px">
+          <i class="fa-solid fa-user fa-xl ms-2 mx-2"></i>
+          {{ "Join the Freelancers" | translate }}
+        </div>
+
+        <div class="d-flex flex-wrap">
+          <!-- Freelnacer Form  -->
+          <div class="w-100 m-4 shadow p-3 bg-white rounded">
+            <!-- Freelnacer Form  -->
+
+            <form
+              #addingFreelancerForm="ngForm"
+              (ngSubmit)="addNewFreelancer()"
+            >
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="inputEmail4" class="my-2">{{
+                    "Fullname" | translate
+                  }}</label>
+                  <input
+                    type="text"
+                    name="name"
+                    [(ngModel)]="newFreelancer.name"
+                    class="form-control"
+                    id="inputEmail4"
+                    placeholder=" {{ 'name' | translate }}"
+                    #freelancerName="ngModel"
+                    required
+                    pattern="[أ-ي \s]{3,}"
+                    [class.is-valid]="freelancerName.valid"
+                    [class.is-invalid]="
+                      freelancerName.invalid && freelancerName.touched
+                    "
+                  />
+                  <div
+                    class="alert alert-danger my-2 p-1"
+                    [hidden]="freelancerName.valid || freelancerName.untouched"
+                  >
+                    <small *ngIf="freelancerName.errors?.['required']">
+                      {{ "must add name" | translate }}</small
+                    >
+                    <small *ngIf="freelancerName.errors?.['pattern']">
+                      {{ "name must be at least 3 characers" | translate }}
+                    </small>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="inputPassword4" class="my-2"
+                    >{{ "Email" | translate }}:</label
+                  >
+                  <input
+                    #email
+                    type="email"
+                    name="email"
+                    class="form-control"
+                    id="inputPassword4"
+                    placeholder="{{ 'Email' | translate }} "
+                    required
+                  />
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="inputAddress" class="my-2"
+                  >{{ "Country" | translate }} :</label
+                >
+                <input
+                  type="text"
+                  name="country"
+                  class="form-control"
+                  id="inputAddress"
+                  placeholder="{{ 'Country' | translate }} ..."
+                  required
+                  pattern="[أ-ي]{3,12}"
+                />
+              </div>
+              <div class="form-group">
+                <label for="title" class="my-2">
+                  {{ "Job" | translate }} :</label
+                >
+                <input
+                  #freelancerTitle="ngModel"
+                  type="text"
+                  name="title"
+                  [(ngModel)]="newFreelancer.title"
+                  class="form-control"
+                  id="title"
+                  placeholder="{{ 'Which Skills I have' | translate }}"
+                  required
+                  pattern="[أ-ي \s]{3,}"
+                  [class.is-valid]="freelancerTitle.valid"
+                  [class.is-invalid]="
+                    freelancerTitle.invalid && freelancerTitle.touched
+                  "
+                />
+                <div
+                  class="alert alert-danger my-2 p-1"
+                  [hidden]="freelancerTitle.valid || freelancerTitle.untouched"
+                >
+                  <small *ngIf="freelancerTitle.errors?.['required']">{{
+                    "Must add Job" | translate
+                  }}</small>
+                  <small *ngIf="freelancerTitle.errors?.['pattern']"
+                    >{{ "Job must be at least 3 characters" | translate }}
+                  </small>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="inputAddress3" class="my-2">
+                  {{ "Personal Pic ( URL )" | translate }}
+                </label>
+                <input
+                  #freelancerImg="ngModel"
+                  type="url"
+                  name="img"
+                  [(ngModel)]="newFreelancer.img"
+                  class="form-control"
+                  id="inputAddress3"
+                  placeholder="{{ 'Personal Pic ( URL )' | translate }}"
+                  required
+                  pattern="https?://.+"
+                  [class.is-valid]="freelancerImg.valid"
+                  [class.is-invalid]="
+                    freelancerImg.invalid && freelancerImg.touched
+                  "
+                />
+                <div
+                  class="alert alert-danger my-2 p-1"
+                  [hidden]="freelancerImg.valid || freelancerImg.untouched"
+                >
+                  <small *ngIf="freelancerImg.errors?.['required']">{{
+                    "Must Add Pic" | translate
+                  }}</small>
+                  <small *ngIf="freelancerImg.errors?.['pattern']">{{
+                    "Pic must be URL" | translate
+                  }}</small>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="foru" class="my-2">
+                  {{
+                    "A summary of your work and experience" | translate
+                  }}:</label
+                ><br />
+                <input
+                  type="text"
+                  class="form-control"
+                  id="foru"
+                  required
+                  pattern="[أ-ي \s]{2,}"
+                />
+              </div>
+
+              <div class="form-group col-md-4">
+                <label for="inputState" class="my-2">
+                  {{ "City" | translate }}:</label
+                >
+                <select id="inputState" class="form-control">
+                  <option selected>{{ "Choose City" | translate }}</option>
+                  <option>{{ "Cairo" | translate }}</option>
+                  <option>{{ "Giza" | translate }}</option>
+                  <option>{{ "Alex" | translate }}</option>
+                  <option>{{ "Qena" | translate }}</option>
+                </select>
+              </div>
+
+              <div class="d-flex my-4">
+                <div>
+                  <input
+                    class="form-check-input p-2 mx-2"
+                    type="checkbox"
+                    id="gridCheck"
+                    required
+                  />{{ "I agree to the terms and conditions" | translate }}
+                </div>
+              </div>
+
+              <button
+                type="submit"
+                class="btn btn-success w-50 BTNForSub"
+                [disabled]="addingFreelancerForm.invalid"
+              >
+                {{ "Submit" | translate }}
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

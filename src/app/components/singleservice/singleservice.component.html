@@ -1,0 +1,1498 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ٍsingle service</title>
+  </head>
+  <body data-bs-spy="scroll" data-bs-target="#service-nav">
+    <!-- <section class="content"> -->
+    <section class="container pt-4 pb-4">
+      <div class="tabs-bar border ps-3 d-flex justify-content-between mb-3">
+        <ul class="nav" id="service-nav">
+          <li class="nav-item">
+            <a
+              class="nav-link active"
+              aria-current="page"
+              href="#service-sec"
+              >{{ "description" | translate }}</a
+            >
+          </li>
+          <!-- <li class="nav-item">
+            <a
+              class="nav-link"
+              aria-current="page"
+              routerLink="#service-addons"
+              >{{ "addons" | translate }}</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              aria-current="page"
+              routerLink="#service-ratings"
+              >{{ "evaluation" | translate }}</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page">{{
+              "suggested_services" | translate
+            }}</a>
+          </li> -->
+        </ul>
+        <div class="more-menu">
+          <div class="dropdown">
+            <button
+              class="btn border"
+              type="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              <i class="fas fa-ellipsis-v fs-4 text-muted"></i>
+            </button>
+            <ul class="dropdown-menu">
+              <!-- <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li> -->
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 col-xl-8">
+          <div class="service-sec" id="service-sec">
+            <div class="service-head d-flex justify-content-between">
+              <div class="service-title fw-bold fs-5">
+                {{ myservice.title }}
+                <p class="title-font fw-bold mb-10"></p>
+                <nav aria-label="breadcrumb">
+                  <ol class="breadcrumb page-inner-breadcrumb small-breadcrumb">
+                    <li class="breadcrumb-item fs-6 fw-normal">
+                      <a style="color: #505050" href="#">
+                        {{ myservice.category }}
+                      </a>
+                    </li>
+                    <!-- <li class="breadcrumb-item" aria-current="page">
+                      <a style="color: #1dbf73" href="#">تسويق تيكتوك</a>
+                    </li> -->
+                  </ol>
+                </nav>
+              </div>
+              <div class="service-rating">
+                <div class="rate-view">
+                  <i
+                    class="fas fa-star star-active"
+                    *ngFor="
+                      let item of [].constructor(myservice.rating);
+                      let i = index
+                    "
+                  ></i>
+                  <i
+                    class="fas fa-star text-light-emphasis"
+                    *ngFor="
+                      let item of [].constructor(5 - myservice.rating!);
+                      let i = index
+                    "
+                  ></i>
+                  <!--<i class="fas fa-star star-active"></i>
+                  <i class="fas fa-star star-active"></i>
+                  <i class="fas fa-star star-active"></i> -->
+                  <span class="rate-range"> {{ myservice.rating }}.0 </span>
+                  <span class="text-small">(15)</span>
+                </div>
+              </div>
+            </div>
+            <div class="service-slider rounded">
+              <div
+                id="carouselExampleAutoplaying"
+                class="carousel slide"
+                data-bs-ride="carousel"
+              >
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img
+                      class="rounded"
+                      style="max-height: 500px; object-fit: cover"
+                      [src]="myservice.mainImg"
+                      alt="img "
+                    />
+                  </div>
+                  <div
+                    class="carousel-item active"
+                    *ngFor="let img of myservice.imgs"
+                  >
+                    <img
+                      class="rounded"
+                      style="max-height: 500px; object-fit: cover"
+                      src="{{ img }}"
+                      alt="img "
+                    />
+                  </div>
+                </div>
+                <button
+                  class="carousel-control-prev"
+                  type="button"
+                  data-bs-target="#carouselExampleAutoplaying"
+                  data-bs-slide="prev"
+                >
+                  <span
+                    class="carousel-control-prev-icon"
+                    aria-hidden="true"
+                    style="color: #00acee"
+                  ></span>
+                  <span class="visually-hidden" style="color: #00acee"
+                    >Previous</span
+                  >
+                </button>
+                <button
+                  class="carousel-control-next"
+                  type="button"
+                  data-bs-target="#carouselExampleAutoplaying"
+                  data-bs-slide="next"
+                >
+                  <span
+                    class="carousel-control-next-icon"
+                    aria-hidden="true"
+                  ></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+              </div>
+            </div>
+            <div class="service-desc">
+              <p class="title">
+                <b>{{ "description" | translate }}</b>
+                <br />
+              </p>
+              <h5>
+                {{ myservice.description }}
+              </h5>
+            </div>
+          </div>
+          <!-- service addons -->
+          <div class="accordion mb-3" id="service-addons">
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingOne">
+                <button
+                  class="accordion-button"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseOne"
+                  aria-expanded="true"
+                  aria-controls="collapseOne"
+                >
+                  {{ "service_addons" | translate }}
+                </button>
+              </h2>
+              <div
+                id="collapseOne"
+                class="accordion-collapse collapse show"
+                aria-labelledby="headingOne"
+                data-bs-parent="#service-additions"
+              >
+                <div
+                  class="accordion-body d-flex justify-content-between"
+                  *ngFor="let item of myservice.addons"
+                >
+                  <div class="option d-flex align-items-center gap-2">
+                    <input
+                      class="option-check"
+                      type="checkbox"
+                      name="option1"
+                      id="option1"
+                    />
+
+                    <label for="option"> {{ item.addonTitle }}</label>
+                  </div>
+                  <div class="option-info d-flex gap-3">
+                    <span class="option-price">{{ item.addonPrice }}$</span>
+                    <span class="option-text">
+                      يستغرق
+                      {{ item.addonDeliveryDuration }}
+                      يوم اضافي</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- service-buy -->
+          <div class="service-buy mb-3 border rounded">
+            <div class="service-buy-head border rounded-top p-3">
+              <span>{{ "buy_service" | translate }}</span>
+            </div>
+
+            <div
+              class="service-buy-body rounded-bottom d-flex flex-wrap align-items-center justify-content-between p-3"
+            >
+              <div
+                class="number col-12 d-flex justify-content-between col-md-3"
+              >
+                <button id="service-plus" (click)="buyplus()">+</button>
+                <input
+                  id="number-box"
+                  type="number"
+                  min="1"
+                  max="10"
+                  [value]="this.amount"
+                  disabled
+                />
+                <button id="service-minus" (click)="buyminus()">-</button>
+              </div>
+
+              <div
+                class="total-price col-12 col-md-3 d-flex justify-content-center align-items-center"
+              >
+                <span>{{ "total_price" | translate }}</span>
+                <span id="total-price">
+                  {{ totalprice }}
+                  $</span
+                >
+              </div>
+              <div class="col-12 col-md-2 d-flex justify-content-center">
+                <button
+                  class="buy-btn d-flex flex-grow-1 align-items-center justify-content-center"
+                >
+                  <i class="fas fa-shopping-cart mx-3"></i>
+                  {{ "buy" | translate }}
+                </button>
+              </div>
+            </div>
+            <div
+              class="alert alert-danger mx-3"
+              id="buy-alert"
+              role="alert"
+            ></div>
+          </div>
+          <!-- service ratings and comments -->
+          <div class="accordion mb-3" id="service-ratings">
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingOne">
+                <button
+                  class="accordion-button"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#comments"
+                  aria-expanded="true"
+                  aria-controls="comments"
+                >
+                  <div class="d-flex justify-content-between flex-grow-1 fs-5">
+                    <div class="right fw-bold">
+                      <i class="far fa-comment-dots"></i>
+                      <span class="fw-bold px-2"
+                        >{{ "service_evaluation" | translate }}
+                      </span>
+                    </div>
+                    <div class="left d-none d-lg-block">
+                      <span class="">15 {{ "evaluation" | translate }}</span>
+                      <i class="fas fa-star star-active"></i>
+                      <i class="fas fa-star star-active"></i>
+                      <i class="fas fa-star star-active"></i>
+                      <i class="fas fa-star star-active"></i>
+                      <i class="fas fa-star star-active"></i>
+                      <span class="star-active px-1">5.0</span>
+                    </div>
+                  </div>
+                </button>
+              </h2>
+              <div
+                id="comments"
+                class="accordion-collapse collapse show"
+                aria-labelledby="headingOne"
+                data-bs-parent="#service-ratings"
+              >
+                <div class="accordion-body">
+                  <div class="total-rates">
+                    <!-- stars and progressbars -->
+                    <div class="right py-2">
+                      <div
+                        class="rate-view m-3 d-flex flex-column justify-content-center align-items-center d-lg-none"
+                      >
+                        <span class="rate-range">
+                          15 {{ "evaluation" | translate }}
+                        </span>
+                        <div>
+                          <i class="fas fa-star star-active"></i>
+                          <i class="fas fa-star star-active"></i>
+                          <i class="fas fa-star star-active"></i>
+                          <i class="fas fa-star star-active"></i>
+                          <i class="fas fa-star star-active"></i>
+                        </div>
+                        <span class="text-small">5.0</span>
+                      </div>
+                      <div class="rate-progress-row d-flex">
+                        <div class="stars">
+                          <i class="fas fa-star star-active"></i>
+                          <i class="fas fa-star star-active"></i>
+                          <i class="fas fa-star star-active"></i>
+                          <i class="fas fa-star star-active"></i>
+                          <i class="fas fa-star star-active"></i>
+                        </div>
+                        <div class="rate-progress">
+                          <div
+                            class="bar"
+                            style="width: 93.333333333333%"
+                          ></div>
+                        </div>
+                        <span class="count">14</span>
+                      </div>
+                      <div class="rate-progress-row">
+                        <div class="stars">
+                          <i class="fas fa-star star-active"></i>
+                          <i class="fas fa-star star-active"></i>
+                          <i class="fas fa-star star-active"></i>
+                          <i class="fas fa-star star-active"></i>
+                          <i class="fas fa-star star-inactive"></i>
+                        </div>
+                        <div class="rate-progress">
+                          <div
+                            class="bar"
+                            style="width: 6.6666666666667%"
+                          ></div>
+                        </div>
+                        <span class="count">1</span>
+                      </div>
+                      <div class="rate-progress-row">
+                        <div class="stars">
+                          <i class="fas fa-star star-active"></i>
+                          <i class="fas fa-star star-active"></i>
+                          <i class="fas fa-star star-active"></i>
+                          <i class="fas fa-star star-inactive"></i>
+                          <i class="fas fa-star star-inactive"></i>
+                        </div>
+                        <div class="rate-progress">
+                          <div class="bar" style="width: 0%"></div>
+                        </div>
+                        <span class="count">0</span>
+                      </div>
+                      <div class="rate-progress-row">
+                        <div class="stars">
+                          <i class="fas fa-star star-active"></i>
+                          <i class="fas fa-star star-active"></i>
+                          <i class="fas fa-star star-inactive"></i>
+                          <i class="fas fa-star star-inactive"></i>
+                          <i class="fas fa-star star-inactive"></i>
+                        </div>
+                        <div class="rate-progress">
+                          <div class="bar" style="width: 0%"></div>
+                        </div>
+                        <span class="count">0</span>
+                      </div>
+                      <div class="rate-progress-row">
+                        <div class="stars">
+                          <i class="fas fa-star star-active"></i>
+                          <i class="fas fa-star star-inactive"></i>
+                          <i class="fas fa-star star-inactive"></i>
+                          <i class="fas fa-star star-inactive"></i>
+                          <i class="fas fa-star star-inactive"></i>
+                        </div>
+                        <div class="rate-progress">
+                          <div class="bar" style="width: 0%"></div>
+                        </div>
+                        <span class="count">0</span>
+                      </div>
+                    </div>
+                    <!-- rating details -->
+                    <div class="left p-3">
+                      <p class="title">{{ "Criteria_rating" | translate }}</p>
+                      <div class="rate-analysis-row">
+                        <span class="desc">
+                          {{ "work_quality" | translate }}
+                        </span>
+                        <span class="percent">
+                          <i class="fas fa-star star-active"></i>
+                          4.9
+                        </span>
+                      </div>
+                      <div class="rate-analysis-row">
+                        <span class="desc">
+                          {{ "communication_colaboration" | translate }}</span
+                        >
+                        <span class="percent">
+                          <i class="fas fa-star star-active"></i>
+                          5.0
+                        </span>
+                      </div>
+                      <div class="rate-analysis-row">
+                        <span class="desc">
+                          {{ "Adherence_toschedual" | translate }}</span
+                        >
+                        <span class="percent">
+                          <i class="fas fa-star star-active"></i>
+                          5.0
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- comments -->
+                  <div class="all-rating-container">
+                    <div class="comment-box">
+                      <div class="comment-head">
+                        <a
+                          href="https://kafiil.com/u/mohammed_aldarwish"
+                          class="img"
+                        >
+                          <img
+                            src="https://kafiil.com/modules/user/images/user.svg"
+                            alt=""
+                          />
+                        </a>
+                        <div class="info">
+                          <p class="name">
+                            <a href="https://kafiil.com/u/mohammed_aldarwish"
+                              >Mohammed Aldarwish</a
+                            >
+                          </p>
+                          <div class="date-time">
+                            <span class="date">
+                              <i class="far fa-calendar-alt"></i>
+                              منذ شهر
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="comment-rates">
+                        <div class="comment-rate">
+                          <p class="title">{{ "work_quality" | translate }}</p>
+                          <div class="stars">
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                          </div>
+                        </div>
+                        <div class="comment-rate">
+                          <p class="title">
+                            {{ "communication_colaboration" | translate }}
+                          </p>
+                          <div class="stars">
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                          </div>
+                        </div>
+                        <div class="comment-rate">
+                          <p class="title">
+                            {{ "Adherence_toschedual" | translate }}
+                          </p>
+                          <div class="stars">
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                          </div>
+                        </div>
+                        <div class="comment-rate">
+                          <p class="title">{{ "overall_ev" | translate }}</p>
+                          <div class="stars">
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="comment-box">
+                      <div class="comment-head">
+                        <a href="https://kafiil.com/u/Ghasan" class="img">
+                          <img
+                            src="https://kafiil.s3.eu-central-1.amazonaws.com/media/avatar/d2a9f2b3b9ee16a76528db996970277e/c/3827d49f186f2a98d56b2cda46df27ce-small.jpg"
+                            alt=""
+                          />
+                        </a>
+                        <div class="info">
+                          <p class="name">
+                            <a href="https://kafiil.com/u/Ghasan"
+                              >Ghasan Hasan</a
+                            >
+                          </p>
+                          <div class="date-time">
+                            <span class="date">
+                              <i class="far fa-calendar-alt"></i>
+                              منذ شهرين
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="comment-rates">
+                        <div class="comment-rate">
+                          <p class="title">{{ "work_quality" | translate }}</p>
+                          <div class="stars">
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                          </div>
+                        </div>
+                        <div class="comment-rate">
+                          <p class="title">
+                            {{ "communication_colaboration" | translate }}
+                          </p>
+                          <div class="stars">
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                          </div>
+                        </div>
+                        <div class="comment-rate">
+                          <p class="title">
+                            {{ "Adherence_toschedual" | translate }}
+                          </p>
+                          <div class="stars">
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                          </div>
+                        </div>
+                        <div class="comment-rate">
+                          <p class="title">{{ "overall_ev" | translate }}</p>
+                          <div class="stars">
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                          </div>
+                        </div>
+                      </div>
+                      <p
+                        class="comment-desc rating-main-comment"
+                        style="word-wrap: break-word"
+                      >
+                        عمل جيد / شكراً
+                      </p>
+                    </div>
+                    <div class="comment-box">
+                      <div class="comment-head">
+                        <a href="https://kafiil.com/u/19917mahmoud" class="img">
+                          <img
+                            src="https://kafiil.com/modules/user/images/user.svg"
+                            alt=""
+                          />
+                        </a>
+                        <div class="info">
+                          <p class="name">
+                            <a href="https://kafiil.com/u/19917mahmoud"
+                              >Mahmoud Al Ali</a
+                            >
+                          </p>
+                          <div class="date-time">
+                            <span class="date">
+                              <i class="far fa-calendar-alt"></i>
+                              منذ شهرين
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="comment-rates">
+                        <div class="comment-rate">
+                          <p class="title">{{ "work_quality" | translate }}</p>
+                          <div class="stars">
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                          </div>
+                        </div>
+                        <div class="comment-rate">
+                          <p class="title">
+                            {{ "communication_colaboration" | translate }}
+                          </p>
+                          <div class="stars">
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                          </div>
+                        </div>
+                        <div class="comment-rate">
+                          <p class="title">
+                            {{ "Adherence_toschedual" | translate }}
+                          </p>
+                          <div class="stars">
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                          </div>
+                        </div>
+                        <div class="comment-rate">
+                          <p class="title">{{ "overall_ev" | translate }}</p>
+                          <div class="stars">
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="comment-box">
+                      <div class="comment-head">
+                        <a href="https://kafiil.com/u/rabiealeid" class="img">
+                          <img
+                            src="https://kafiil.com/modules/user/images/user.svg"
+                            alt=""
+                          />
+                        </a>
+                        <div class="info">
+                          <p class="name">
+                            <a href="https://kafiil.com/u/rabiealeid"
+                              >Rabie Aleid</a
+                            >
+                          </p>
+                          <div class="date-time">
+                            <span class="date">
+                              <i class="far fa-calendar-alt"></i>
+                              منذ شهرين
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="comment-rates">
+                        <div class="comment-rate">
+                          <p class="title">{{ "work_quality" | translate }}</p>
+                          <div class="stars">
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                          </div>
+                        </div>
+                        <div class="comment-rate">
+                          <p class="title">
+                            {{ "communication_colaboration" | translate }}
+                          </p>
+                          <div class="stars">
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                          </div>
+                        </div>
+                        <div class="comment-rate">
+                          <p class="title">
+                            {{ "Adherence_toschedual" | translate }}
+                          </p>
+                          <div class="stars">
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                          </div>
+                        </div>
+                        <div class="comment-rate">
+                          <p class="title">{{ "overall_ev" | translate }}</p>
+                          <div class="stars">
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="comment-box">
+                      <div class="comment-head">
+                        <a
+                          href="https://kafiil.com/u/muhanad_ismail"
+                          class="img"
+                        >
+                          <img
+                            src="https://kafiil.com/modules/user/images/user.svg"
+                            alt=""
+                          />
+                        </a>
+                        <div class="info">
+                          <p class="name">
+                            <a href="https://kafiil.com/u/muhanad_ismail"
+                              >Muhanad Ismail</a
+                            >
+                          </p>
+                          <div class="date-time">
+                            <span class="date">
+                              <i class="far fa-calendar-alt"></i>
+                              منذ 3 أشهر
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="comment-rates">
+                        <div class="comment-rate">
+                          <p class="title">{{ "work_quality" | translate }}</p>
+                          <div class="stars">
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                          </div>
+                        </div>
+                        <div class="comment-rate">
+                          <p class="title">
+                            {{ "communication_colaboration" | translate }}
+                          </p>
+                          <div class="stars">
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                          </div>
+                        </div>
+                        <div class="comment-rate">
+                          <p class="title">
+                            {{ "Adherence_toschedual" | translate }}
+                          </p>
+                          <div class="stars">
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                          </div>
+                        </div>
+                        <div class="comment-rate">
+                          <p class="title">{{ "overall_ev" | translate }}</p>
+                          <div class="stars">
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="comment-box">
+                      <div class="comment-head">
+                        <a href="https://kafiil.com/u/saram_hh" class="img">
+                          <img
+                            src="https://kafiil.s3.eu-central-1.amazonaws.com/media/avatar/f2947163418207dd5b220e470d91c05d/c/1e56820cce22d25ee91c8d4bafee9aed-small.jpg"
+                            alt=""
+                          />
+                        </a>
+                        <div class="info">
+                          <p class="name">
+                            <a href="https://kafiil.com/u/saram_hh"
+                              >ساره محمد</a
+                            >
+                          </p>
+                          <div class="date-time">
+                            <span class="date">
+                              <i class="far fa-calendar-alt"></i>
+                              منذ 6 أشهر
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="comment-rates">
+                        <div class="comment-rate">
+                          <p class="title">{{ "work_quality" | translate }}</p>
+                          <div class="stars">
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                          </div>
+                        </div>
+                        <div class="comment-rate">
+                          <p class="title">
+                            {{ "communication_colaboration" | translate }}
+                          </p>
+                          <div class="stars">
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                          </div>
+                        </div>
+                        <div class="comment-rate">
+                          <p class="title">
+                            {{ "Adherence_toschedual" | translate }}
+                          </p>
+                          <div class="stars">
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                          </div>
+                        </div>
+                        <div class="comment-rate">
+                          <p class="title">{{ "overall_ev" | translate }}</p>
+                          <div class="stars">
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                          </div>
+                        </div>
+                      </div>
+                      <p
+                        class="comment-desc rating-main-comment"
+                        style="word-wrap: break-word"
+                      >
+                        شكرا لك
+                      </p>
+                    </div>
+                    <div class="comment-box">
+                      <div class="comment-head">
+                        <a href="https://kafiil.com/u/awad_silver" class="img">
+                          <img
+                            src="https://kafiil.s3.eu-central-1.amazonaws.com/media/avatar/9e46b288f46ac29e366bd9be718c5b32/c/170e9a052c95f9c3c4a2c90b87274517-small.jpg"
+                            alt=""
+                          />
+                        </a>
+                        <div class="info">
+                          <p class="name">
+                            <a href="https://kafiil.com/u/awad_silver"
+                              >عوض عبدالقيوم</a
+                            >
+                          </p>
+                          <div class="date-time">
+                            <span class="date">
+                              <i class="far fa-calendar-alt"></i>
+                              منذ 6 أشهر
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="comment-rates">
+                        <div class="comment-rate">
+                          <p class="title">{{ "work_quality" | translate }}</p>
+                          <div class="stars">
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star"></i>
+                          </div>
+                        </div>
+                        <div class="comment-rate">
+                          <p class="title">
+                            {{ "communication_colaboration" | translate }}
+                          </p>
+                          <div class="stars">
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                          </div>
+                        </div>
+                        <div class="comment-rate">
+                          <p class="title">
+                            {{ "Adherence_toschedual" | translate }}
+                          </p>
+                          <div class="stars">
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                          </div>
+                        </div>
+                        <div class="comment-rate">
+                          <p class="title">{{ "overall_ev" | translate }}</p>
+                          <div class="stars">
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star"></i>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="comment-box">
+                      <div class="comment-head">
+                        <a href="https://kafiil.com/u/alimagdy2" class="img">
+                          <img
+                            src="https://kafiil.com/modules/user/images/user.svg"
+                            alt=""
+                          />
+                        </a>
+                        <div class="info">
+                          <p class="name">
+                            <a href="https://kafiil.com/u/alimagdy2"
+                              >Ali Magdy</a
+                            >
+                          </p>
+                          <div class="date-time">
+                            <span class="date">
+                              <i class="far fa-calendar-alt"></i>
+                              منذ 7 أشهر
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="comment-rates">
+                        <div class="comment-rate">
+                          <p class="title">{{ "work_quality" | translate }}</p>
+                          <div class="stars">
+                            <i class="fas fa-star star-active"></i>
+
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                          </div>
+                        </div>
+                        <div class="comment-rate">
+                          <p class="title">
+                            {{ "communication_colaboration" | translate }}
+                          </p>
+                          <div class="stars">
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                          </div>
+                        </div>
+                        <div class="comment-rate">
+                          <p class="title">
+                            {{ "Adherence_toschedual" | translate }}
+                          </p>
+                          <div class="stars">
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                          </div>
+                        </div>
+                        <div class="comment-rate">
+                          <p class="title">{{ "overall_ev" | translate }}</p>
+                          <div class="stars">
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                          </div>
+                        </div>
+                      </div>
+                      <p
+                        class="comment-desc rating-main-comment"
+                        style="word-wrap: break-word"
+                      >
+                        شكرا أخي الكريم
+                      </p>
+                      <div class="comment-box reply">
+                        <div class="comment-head">
+                          <a href="https://kafiil.com/u/mohameda1" class="img">
+                            <img
+                              src="https://kafiil.com/storage/images/users/9fd3a703-e13c-4a68-825d-7e1d2ac368fb.jpg"
+                              alt=""
+                            />
+                          </a>
+                          <div class="info">
+                            <p class="name">محمد السيد</p>
+                            <div class="date-time">
+                              <span class="date">
+                                <i class="far fa-calendar-alt"></i>
+                                منذ 7 أشهر
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                        <p class="comment-desc">
+                          شكرا اخي على تقييمك رغم التأخير الغير مقصود
+                        </p>
+                      </div>
+                    </div>
+                    <div class="comment-box">
+                      <div class="comment-head">
+                        <a href="https://kafiil.com/u/alimagdy2" class="img">
+                          <img
+                            src="https://kafiil.com/modules/user/images/user.svg"
+                            alt=""
+                          />
+                        </a>
+                        <div class="info">
+                          <p class="name">
+                            <a href="https://kafiil.com/u/alimagdy2"
+                              >Ali Magdy</a
+                            >
+                          </p>
+                          <div class="date-time">
+                            <span class="date">
+                              <i class="far fa-calendar-alt"></i>
+                              منذ 7 أشهر
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="comment-rates">
+                        <div class="comment-rate">
+                          <p class="title">{{ "work_quality" | translate }}</p>
+                          <div class="stars">
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                          </div>
+                        </div>
+                        <div class="comment-rate">
+                          <p class="title">
+                            {{ "communication_colaboration" | translate }}
+                          </p>
+                          <div class="stars">
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                          </div>
+                        </div>
+                        <div class="comment-rate">
+                          <p class="title">
+                            {{ "Adherence_toschedual" | translate }}
+                          </p>
+                          <div class="stars">
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                          </div>
+                        </div>
+                        <div class="comment-rate">
+                          <p class="title">{{ "overall_ev" | translate }}</p>
+                          <div class="stars">
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                          </div>
+                        </div>
+                      </div>
+                      <p
+                        class="comment-desc rating-main-comment"
+                        style="word-wrap: break-word"
+                      >
+                        شكرا أخي الكريم
+                      </p>
+                    </div>
+                    <div class="comment-box">
+                      <div class="comment-head">
+                        <a href="https://kafiil.com/u/alimagdy2" class="img">
+                          <img
+                            src="https://kafiil.com/modules/user/images/user.svg"
+                            alt=""
+                          />
+                        </a>
+                        <div class="info">
+                          <p class="name">
+                            <a href="https://kafiil.com/u/alimagdy2"
+                              >Ali Magdy</a
+                            >
+                          </p>
+                          <div class="date-time">
+                            <span class="date">
+                              <i class="far fa-calendar-alt"></i>
+                              منذ 7 أشهر
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="comment-rates">
+                        <div class="comment-rate">
+                          <p class="title">{{ "work_quality" | translate }}</p>
+                          <div class="stars">
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                          </div>
+                        </div>
+                        <div class="comment-rate">
+                          <p class="title">
+                            {{ "communication_colaboration" | translate }}
+                          </p>
+                          <div class="stars">
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                          </div>
+                        </div>
+                        <div class="comment-rate">
+                          <p class="title">
+                            {{ "Adherence_toschedual" | translate }}
+                          </p>
+                          <div class="stars">
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                          </div>
+                        </div>
+
+                        <div class="comment-rate">
+                          <p class="title">{{ "overall_ev" | translate }}</p>
+                          <div class="stars">
+                            <!-- <i class="fas fa-star star-active" *ngFor="let item of list"></i> -->
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                            <i class="fas fa-star star-active"></i>
+                          </div>
+                        </div>
+                      </div>
+                      <p
+                        class="comment-desc rating-main-comment"
+                        style="word-wrap: break-word"
+                      >
+                        شكرا أخي الكريم
+                      </p>
+                    </div>
+                  </div>
+                  <div>
+                    <a
+                      id="show_more_reviews"
+                      href="https://kafiil.com/service/36115-%D8%B2%D9%8A%D8%A7%D8%AF%D8%A9-%D9%85%D8%B4%D8%A7%D9%87%D8%AF%D8%A7%D8%AA-%D8%AA%D9%8A%D9%83-%D8%AA%D9%88%D9%83-2?show_all_ratings=1"
+                      class="btn btn-secondary flex-item"
+                    >
+                      <i class="far fa-star"></i>
+                      {{ "showmore_comments" | translate }}</a
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- sidebar -->
+        <div class="col-12 col-xl-4">
+          <div class="seller-sec">
+            <div class="seller-head">
+              <span class="title">
+                <i class="fas fa-user"></i>
+                {{ "seller" | translate }}
+              </span>
+            </div>
+            <div
+              class="seller-info d-flex flex-column align-items-center gap-2"
+            >
+              <div class="avatar">
+                <a href="">
+                  <img class="user-img" [src]="userinfo.imgUrl" alt="" />
+                </a>
+                <img
+                  src="https://kafiil.com/modules/base/img/icons/verified.svg"
+                  alt=""
+                  class="certified"
+                  data-toggle="tooltip"
+                  title=""
+                  data-original-title="الهوية موثقة"
+                />
+                <svg width="82" height="82">
+                  <circle
+                    r="39"
+                    cx="41"
+                    cy="41"
+                    style="stroke-dashoffset: calc(250 - (250 * 67) / 100)"
+                  ></circle>
+                </svg>
+              </div>
+              <span class="seller-name">
+                {{ userinfo.fullname }}
+              </span>
+              <span class="service-category"> {{ myservice.category }} </span>
+              <span
+                class="seller-level d-flex align-items-center justify-content-center gap-2"
+              >
+                <i class="fas fa-layer-group"></i>
+                {{ "seller_level" | translate }}: <span>3</span></span
+              >
+              <span class="seller-rating d-flex gap-2">
+                <i class="fas fa-star star-active"></i>
+                <i class="fas fa-star star-active"></i>
+                <i class="fas fa-star star-active"></i>
+                <i class="fas fa-star star-active"></i>
+                <i class="fas fa-star star-inactive"></i>
+                <span>
+                  4.9
+                  <span class="text-small"> (108) </span>
+                </span>
+              </span>
+              <div class="last-seen d-flex align-items-center">
+                <div class="flag">
+                  <img
+                    class="flagimg"
+                    src="https://cdn-icons-png.flaticon.com/512/206/206690.png"
+                    alt=""
+                  />
+                </div>
+                <i class="far fa-eye"></i>
+                <span class="p-2"
+                  >{{ "last_seen" | translate }}:
+                  <span class="seen-time"> منذ ساعه</span></span
+                >
+              </div>
+              <div class="medals">
+                <i
+                  class="fas fa-credit-card user-badge"
+                  data-toggle="tooltip"
+                  title=""
+                  data-original-title="قام المستخدم بشحن رصيده"
+                ></i>
+                <i
+                  class="fas fa-door-open user-badge"
+                  data-toggle="tooltip"
+                  title=""
+                  data-original-title="المستخدم مسجل فى الموقع منذ سنتين"
+                ></i>
+                <i
+                  class="fas fa-user-check user-badge"
+                  data-toggle="tooltip"
+                  title=""
+                  data-original-title="قام المستخدم بتوثيق حسابه"
+                ></i>
+              </div>
+              <!-- <a href="#" class="theme-btn primary-btn w-100 mt-4 rounded">
+                <i class="far fa-envelope"></i>
+                {{ "contact_me" | translate }}
+              </a> -->
+            </div>
+          </div>
+          <div class="service-info">
+            <div class="accordion mb-3" id="accordionTwo">
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="headingTwo">
+                  <button
+                    class="accordion-button text-black fw-bold"
+                    dir="rtl"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#collapseTwo"
+                    aria-expanded="true"
+                    aria-controls="collapseTwo"
+                  >
+                    <i class="fas fa-list-alt ms-3"></i>
+                    {{ "info" | translate }}
+                  </button>
+                </h2>
+                <div
+                  id="collapseTwo"
+                  dir="rtl"
+                  class="accordion-collapse collapse show"
+                  aria-labelledby="headingTwo"
+                  data-bs-parent="#accordionTwo"
+                >
+                  <div class="accordion-body p-0">
+                    <div class="block-body-two text-muted">
+                      <div class="d-flex justify-content-between py-3">
+                        <div>
+                          <i class="fas fa-dollar-sign"></i>
+                          {{ "price" | translate }}
+                        </div>
+                        <div>
+                          {{ myservice.price }}
+                          $
+                        </div>
+                      </div>
+
+                      <div class="dark d-flex justify-content-between py-3">
+                        <div>
+                          <i class="fas fa-clock"></i>
+                          {{ "deliveryDuration" | translate }}
+                        </div>
+                        <div>{{ myservice.deliveryDuration }}يوم</div>
+                      </div>
+
+                      <div class="d-flex justify-content-between py-3">
+                        <div>
+                          <i class="fas fa-shopping-cart"></i>
+                          {{ "placed_orders" | translate }}
+                        </div>
+                        <div>0</div>
+                      </div>
+
+                      <div class="dark d-flex justify-content-between py-3">
+                        <div>
+                          <i class="fas fa-check"></i>
+                          {{ "complete_orders" | translate }}
+                        </div>
+                        <div>
+                          {{ myservice.orderscount }}
+                        </div>
+                      </div>
+
+                      <div class="d-flex justify-content-between py-3">
+                        <div>
+                          <i class="fas fa-users"></i>
+                          {{ "clients" | translate }}
+                        </div>
+                        <div>16</div>
+                      </div>
+                      <div class="d-flex justify-content-between py-3">
+                        <div>
+                          <i class="fas fa-chart-line"></i>
+                          {{ "sales" | translate }}
+                        </div>
+                        <div>
+                          {{ myservice.orderscount! * myservice.price! }} $
+                        </div>
+                      </div>
+                      <div class="d-flex justify-content-between py-3">
+                        <div>
+                          <i class="fas fa-bars"></i>
+                          {{ "category" | translate }}
+                        </div>
+                        <div>
+                          {{ myservice.category }}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- ads box -->
+          <div
+            style="position: relative"
+            class="ads-block-container"
+            adsid="1675"
+            reported="true"
+          >
+            <a href="#" class="side-offer-service o-hidden block">
+              <div class="ads-block-box">{{ "ads" | translate }}</div>
+              <div class="img">
+                <img
+                  src="https://kafiil.s3.eu-central-1.amazonaws.com/media/gig_other/e5c65c9671106f9ba70e1a78c4c75019/c/f7dfb2113decb3f2c11ea82d0a304088-medium.jpg"
+                />
+              </div>
+              <p class="title">إدارة حساب facebook و instagram</p>
+            </a>
+          </div>
+          <!-- social media box -->
+          <div class="accordion mb-3" id="accordionThree">
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingThree">
+                <button
+                  class="accordion-button text-black fw-bold"
+                  dir="rtl"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseThree"
+                  aria-expanded="true"
+                  aria-controls="collapseThree"
+                >
+                  <i class="fas fa-share-alt ms-3"></i>
+                  {{ "share_win" | translate }}
+                </button>
+              </h2>
+              <div
+                id="collapseThree"
+                dir="rtl"
+                class="accordion-collapse collapse show"
+                aria-labelledby="headingThree"
+                data-bs-parent="#accordionThree"
+              >
+                <div class="accordion-body p-0">
+                  <div>
+                    <div class="">
+                      <div class="p-4">
+                        <div
+                          class="d-flex align-items-center justify-content-between flex-wrap"
+                        >
+                          <div class="share-box" title="شارك على  لينكد إن">
+                            <a href="https://www.linkedin.com/" target="_blank">
+                              <span class="icon" style="color: #0e76a8"
+                                ><i class="fab fa-linkedin-in"></i
+                              ></span>
+                            </a>
+                          </div>
+                          <div class="share-box" title="شارك على  فيسبوك">
+                            <a href="https://www.facebook.com/" target="_blank">
+                              <span class="icon" style="color: #4267b2"
+                                ><i class="fab fa-facebook"></i
+                              ></span>
+                            </a>
+                          </div>
+                          <div class="share-box" title="شارك على  واتس أب">
+                            <a href="https://api.whatsapp.com/" target="_blank">
+                              <span class="icon" style="color: #25d366"
+                                ><i class="fab fa-whatsapp"></i
+                              ></span>
+                            </a>
+                          </div>
+                          <div class="share-box" title="شارك على  تويتر">
+                            <a href="https://twitter.com/" target="_blank">
+                              <span class="icon" style="color: #00acee"
+                                ><i class="fab fa-twitter"></i
+                              ></span>
+                            </a>
+                          </div>
+                          <div class="share-box" title="نسخ إلى الحافظة">
+                            <a href="">
+                              <span class="icon" style="color: black"
+                                ><i class="far fa-copy"></i
+                              ></span>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Button trigger modal -->
+    <button
+      id="modalbtn"
+      type="button"
+      class="btn btn-primary d-none"
+      data-bs-toggle="modal"
+      data-bs-target="#prelodader"
+      #preloadermodalbtn
+    >
+      Launch preloader modal
+    </button>
+    <ngx-spinner
+      bdColor="#1dcf73"
+      size="medium"
+      color="#fff"
+      [fullScreen]="true"
+      size="large"
+      type="line-scale-pulse-out"
+    ></ngx-spinner>
+  </body>
+</html>

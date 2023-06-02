@@ -1,0 +1,234 @@
+<section style="background-color: #f1f2f2">
+  <section class="container my-5">
+    <div class="row">
+      <div class="col-12 col-lg-3 d-lg-block d-none">
+        <div class="pluse text-center py-3 mb-3 rounded-2">
+          <a
+            routerLink="/createservice"
+            class="w-100 text-center text-white text-decoration-none"
+          >
+            {{ "addService" | translate }}
+            <i class="far fa-plus-square mx-3"></i>
+          </a>
+        </div>
+
+        <div class="accordion mb-3" id="accordionExample">
+          <div class="accordion-item text-muted">
+            <h2 class="accordion-header" id="headingOne">
+              <button
+                class="accordion-button text-muted fw-bold"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseOne"
+                aria-expanded="true"
+                aria-controls="collapseOne"
+              >
+                {{ "Categories" | translate }}
+              </button>
+            </h2>
+            <div
+              id="collapseOne"
+              class="accordion-collapse collapse show"
+              aria-labelledby="headingOne"
+              data-bs-parent="#accordionExample"
+            >
+              <div class="accordion-body p-0">
+                <div type="button" (click)="getallservices()" class="right p-3">
+                  <i class="fas fa-paint-brush"></i>
+                  {{ "all" | translate }}
+                </div>
+                <ng-container
+                  *ngFor="let category of categriesList; let i = index"
+                >
+                  <div
+                    type="button"
+                    (click)="categoryFilter(category.categoryName)"
+                    class="right p-3"
+                  >
+                    <i class="fas fa-paint-brush"></i>
+                    {{ category.categoryName }}
+                  </div>
+                </ng-container>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <a href="https://kafiil.com/youtube">
+            <img
+              src="https://kafiil.com/img/youtube-initiative/2.jpg"
+              style="width: 100%"
+            />
+          </a>
+        </div>
+      </div>
+
+      <div class="col-12 col-lg-9">
+        <div class="d-lg-none d-flex justify-content-between">
+          <div class="pluse text-center px-3 py-2 mb-3 rounded-2">
+            <a
+              href="/addContest"
+              class="w-100 text-center text-white text-decoration-none"
+            >
+              <i class="far fa-plus-square mx-3"></i>
+              {{ "addService" | translate }}
+            </a>
+          </div>
+
+          <button
+            class="canvasBtn"
+            type="button"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasRight"
+            aria-controls="offcanvasRight"
+          >
+            <i class="fas fa-sliders-h"></i>
+          </button>
+        </div>
+
+        <div
+          class="filter bg-white rounded-2 mb-3 d-flex justify-content-between"
+        >
+          <span class="fs-5 text-muted">
+            <i class="fas fa-shopping-cart"></i>
+            الخدمات
+          </span>
+          <div class="form-check form-switch">
+            <input
+              class="form-check-input mx-2"
+              type="checkbox"
+              role="switch"
+              id="flexSwitchCheckChecked"
+              (change)="filterfeatured()"
+            />
+            <label class="form-check-label" for="flexSwitchCheckChecked">{{
+              "featured" | translate
+            }}</label>
+          </div>
+        </div>
+
+        <div class="container d-flex gap-3 justify-content-center flex-wrap">
+          <ng-container *ngIf="serviceslist.length < 1">
+            <img
+              src="assets/images/empty-box.png"
+              style="width: 200px; margin: 10%"
+              alt=""
+            />
+          </ng-container>
+          <ng-container *ngIf="serviceslist.length > 0">
+            <ng-container *ngIf="Featured == true">
+              <ng-container *ngFor="let item of serviceslist">
+                <app-servicecard
+                  *ngIf="item.data['isfeatured']"
+                  #cardRef
+                  [carddata]="item"
+                ></app-servicecard>
+              </ng-container>
+            </ng-container>
+            <ng-container *ngIf="Featured == false">
+              <app-servicecard
+                *ngFor="let item of serviceslist"
+                #cardRef
+                [carddata]="item"
+              ></app-servicecard>
+            </ng-container>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- offcanvas body -->
+  <div
+    class="offcanvas offcanvas-end"
+    tabindex="-1"
+    id="offcanvasRight"
+    aria-labelledby="offcanvasRightLabel"
+  >
+    <div class="offcanvas-header">
+      <button class="canvasTitle offcanvas-title" id="offcanvasRightLabel">
+        {{ "Show_results" | translate }}
+      </button>
+      <button
+        type="button"
+        class="back fw-bold"
+        data-bs-dismiss="offcanvas"
+        aria-label="Close"
+      >
+        {{ "back" | translate }}
+        <i class="fas fa-arrow-right"></i>
+      </button>
+    </div>
+    <div class="offcanvas-body">
+      <div class="pluse text-center py-3 mb-3 rounded-2">
+        <a
+          href="/createservice"
+          class="w-100 text-center text-white text-decoration-none"
+        >
+          {{ "addService" | translate }}
+          <i class="far fa-plus-square mx-3"></i>
+        </a>
+      </div>
+
+      <div class="accordion mb-3" id="accordionExample">
+        <div class="accordion-item text-muted">
+          <h2 class="accordion-header" id="headingOne">
+            <button
+              class="accordion-button text-muted fw-bold"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#collapseOne"
+              aria-expanded="true"
+              aria-controls="collapseOne"
+            >
+              {{ "Categories" | translate }}
+            </button>
+          </h2>
+          <div
+            id="collapseOne"
+            class="accordion-collapse collapse show"
+            aria-labelledby="headingOne"
+            data-bs-parent="#accordionExample"
+          >
+            <div class="accordion-body p-0">
+              <div type="button" (click)="getallservices()" class="right p-3">
+                <i class="fas fa-paint-brush"></i>
+                {{ "all" | translate }}
+              </div>
+
+              <ng-container
+                *ngFor="let category of categriesList; let i = index"
+              >
+                <div
+                  type="button"
+                  (click)="categoryFilter(category.categoryName)"
+                  class="right p-3"
+                >
+                  <i class="fas fa-paint-brush"></i>
+                  {{ category.categoryName }}
+                </div>
+              </ng-container>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <a href="https://kafiil.com/youtube">
+          <img
+            src="https://kafiil.com/img/youtube-initiative/2.jpg"
+            style="width: 100%"
+          />
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+<ngx-spinner
+  bdColor="#1dcf73"
+  size="medium"
+  color="#fff"
+  [fullScreen]="true"
+  size="large"
+  type="line-scale-pulse-out"
+></ngx-spinner>

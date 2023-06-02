@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "kafiil-12b6c": {
+      "hosting": {
+        "kafilwebsite": [
+          "kafiil-12b6c"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "kafiil-12b6c"
+  }
+}

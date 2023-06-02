@@ -1,0 +1,902 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="container-fluid carousel" style="background-color: #f1f2f2">
+      <!-- Carousel in the beggining of page  -->
+      <div
+        id="carouselExampleDark"
+        class="carousel carousel-dark slide p-5"
+        data-bs-ride="carousel"
+      >
+        <div class="carousel-indicators">
+          <button
+            type="button"
+            data-bs-target="#carouselExampleDark"
+            data-bs-slide-to="0"
+            class="active"
+            aria-current="true"
+            aria-label="Slide 1"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#carouselExampleDark"
+            data-bs-slide-to="1"
+            aria-label="Slide 2"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#carouselExampleDark"
+            data-bs-slide-to="2"
+            aria-label="Slide 3"
+          ></button>
+          <button
+            class="carousel-control-prev"
+            type="button"
+            data-bs-target="#carouselExampleDark"
+            data-bs-slide="prev"
+          >
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button
+            class="carousel-control-next"
+            type="button"
+            data-bs-target="#carouselExampleDark"
+            data-bs-slide="next"
+          >
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+        <div class="carousel-inner">
+          <!-- first slide -->
+          <div class="carousel-item" data-bs-interval="10000">
+            <div
+              class="align-items-center justify-content-center w-100 d-block d-sm-block d-md-block d-lg-flex d-xl-flex d-xxl-flex"
+            >
+              <!-- d-none d-sm-none d-md-flex d-lg-flex  -->
+              <div
+                class="m-3 col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 col-xxl-5"
+              >
+                <h1 class="my-3">{{ "Services" | translate }}</h1>
+                <p class="my-3">
+                  {{ "Services slide txt" | translate }}
+                </p>
+                <button class="myBtn ms-3" routerLink="/services">
+                  {{ "Explore Services" | translate }}
+                </button>
+                <a
+                  href="https://www.youtube.com/watch?v=U-3knuWDrXk"
+                  target="_blank"
+                  class="mx-3"
+                  ><i class="fa-regular fa-circle-play fa-2xl ms-2"></i>
+                  <span> {{ "watch the video" | translate }} </span></a
+                >
+              </div>
+              <div
+                class="m-3 d-flex justify-content-center col-12 col-sm-12 col-md-12 col-lg-5 col-xl-5 col-xxl-6"
+              >
+                <img src=" ./../../../../../assets/images/1.svg" alt="..." />
+              </div>
+            </div>
+          </div>
+          <!-- second slide -->
+          <div class="carousel-item active" data-bs-interval="2000">
+            <div
+              class="align-items-center justify-content-center w-100 d-block d-sm-block d-md-block d-lg-flex d-xl-flex d-xxl-flex"
+            >
+              <div
+                class="m-3 col-12 col-sm-12 col-md-12 col-lg-5 col-xl-6 col-xxl-5"
+              >
+                <h1 class="my-2">{{ "Welcome to kafill" | translate }}</h1>
+                <p class="my-2">
+                  {{ "first slide txt1" | translate }}
+                </p>
+                <div class="input-group mb-3">
+                  <input
+                    type="search"
+                    class="form-control rounded my-2"
+                    placeholder="{{ 'any many more' | translate }}"
+                    aria-label="Search"
+                    aria-describedby="search-addon"
+                    #searchtxt
+                    (keydown)="search(searchtxt.value)"
+                    (keyup)="search(searchtxt.value)"
+                  />
+                  <button
+                    type="button"
+                    class="btn btn-outline-success searchBtn my-2"
+                    (click)="goTo(searchtxt.value)"
+                  >
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                  </button>
+                </div>
+                <button class="myBtn ms-3" routerLink="/register">
+                  {{ "register now" | translate }}
+                </button>
+                <a
+                  href="https://www.youtube.com/watch?v=U-3knuWDrXk"
+                  target="_blank"
+                  class="mx-3"
+                  ><i class="fa-regular fa-circle-play fa-2xl ms-2"></i>
+                  <span>{{ "watch the video" | translate }} </span></a
+                >
+              </div>
+              <div
+                class="m-3 d-flex justify-content-center col-12 col-sm-12 col-md-12 col-lg-6 col-xl-5 col-xxl-5"
+              >
+                <img src="./../../../../../assets/images/4.svg" alt="..." />
+              </div>
+            </div>
+          </div>
+          <!-- third slide -->
+          <div class="carousel-item">
+            <div
+              class="align-items-center justify-content-center w-100 d-block d-sm-block d-md-block d-lg-flex d-xl-flex d-xxl-flex"
+            >
+              <div
+                class="m-3 col-12 col-sm-12 col-md-12 col-lg-6 col-xl-5 col-xxl-5"
+              >
+                <h1 class="my-4">{{ "Projects" | translate }}</h1>
+                <p class="my-2">
+                  {{ "Projects slide txt" | translate }}
+                </p>
+                <button class="myBtn ms-3 my-2" routerLink="/portfolios">
+                  {{ "Explore Projects" | translate }}
+                </button>
+                <a
+                  href="https://www.youtube.com/watch?v=U-3knuWDrXk"
+                  target="_blank"
+                  class="mx-2"
+                  ><i class="fa-regular fa-circle-play fa-2xl ms-2"></i>
+                  <span>{{ "watch the video" | translate }} </span></a
+                >
+              </div>
+              <div
+                class="m-3 d-flex justify-content-center col-12 col-sm-12 col-md-12 col-lg-5 col-xl-6 col-xxl-5"
+              >
+                <img src=" ./../../../../../assets/images/3.svg" alt="..." />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-12 text-center p-5">
+          <div class="p-3 d-flex justify-content-center">
+            <div class="m-4">
+              <i class="fa-solid fa-suitcase fa-2xl"></i>
+            </div>
+            <div class="m-3">
+              <h2>{{ "how it works" | translate }}</h2>
+            </div>
+          </div>
+          <div class="p-3 d-flex justify-content-center">
+            <div class="w-25 p-3 tab" routerLink="/services">
+              {{ "Services" | translate }}
+            </div>
+            <div class="w-25 p-3 tab" routerLink="/projects">
+              {{ "Projects" | translate }}
+            </div>
+            <div class="w-25 p-3 tab" routerLink="/contests">
+              {{ "Contests" | translate }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container mb-5">
+      <div class="row">
+        <div class="col-12 text-center d-flex justify-content-center">
+          <div
+            class="d-block d-sm-block d-md-block d-lg-flex d-xl-flex d-xxl-flex"
+            style="border: 1px solid rgb(207, 206, 206); border-radius: 10px"
+          >
+            <div
+              class="tt col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 col-xxl-4"
+            >
+              <div
+                class="h-50 p-5 d-flex align-items-end justify-content-center"
+              >
+                <img
+                  src="./../../../../../assets/images/6.svg"
+                  width="65px"
+                  height="=65px"
+                />
+              </div>
+              <div class="h-50 p-5">
+                <div class="d-flex justify-content-center p-3 w-100 mb-3">
+                  <div class="myIcon">1</div>
+                </div>
+                <h4>{{ "Explore Services" | translate }}</h4>
+                <p>
+                  {{
+                    "Browse and compare services to choose the most suitable for you"
+                      | translate
+                  }}
+                </p>
+              </div>
+            </div>
+            <div
+              class="tt col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 col-xxl-4"
+            >
+              <div
+                class="h-50 p-5 d-flex align-items-end justify-content-center"
+              >
+                <div>
+                  <i
+                    class="fa-solid fa-circle-play mb-4 fa-xl"
+                    style="color: #1dbf73 !important"
+                  ></i>
+                  <h4>{{ "Ask for a Service" | translate }}</h4>
+                  <p>
+                    {{
+                      "Browse and compare services to choose the most suitable for you"
+                        | translate
+                    }}
+                  </p>
+                </div>
+              </div>
+              <div class="h-50 p-5">
+                <div class="d-flex justify-content-center p-3 w-100 mb-3">
+                  <div class="myIcon">2</div>
+                </div>
+                <img
+                  src="./../../../../../assets/images/7.svg"
+                  width="65px"
+                  height="=65px"
+                />
+              </div>
+            </div>
+
+            <div
+              class="tt col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 col-xxl-4"
+            >
+              <div
+                class="h-50 p-5 d-flex align-items-end justify-content-center"
+              >
+                <img
+                  src="./../../../../../assets/images/5.svg"
+                  width="65px"
+                  height="=65px"
+                />
+              </div>
+              <div class="h-50 p-5 text-center">
+                <div class="d-flex justify-content-center p-3 w-100">
+                  <div class="myIcon">3</div>
+                </div>
+                <h4>{{ "Recive" | translate }}</h4>
+                <p>
+                  {{
+                    "Receive your service with quality and on the agreed date"
+                      | translate
+                  }}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container" style="background-color: #f1f2f2">
+      <div class="row">
+        <div class="col-12 text-center mt-5">
+          <h3>{{ "Why Kafill ?" | translate }}</h3>
+          <p>
+            {{
+              "Kafeel works to provide a professional and safe environment for dealing between entrepreneurs and independents through:"
+                | translate
+            }}
+          </p>
+        </div>
+
+        <div
+          class="col-12 d-block d-sm-block d-md-block d-lg-flex d-xl-flex d-xxl-flex justify-content-center"
+        >
+          <div
+            class="m-5 p-5 col-10 col-sm-10 col-md-10 col-lg-5 col-xl-5 col-xxl-5"
+          >
+            <h5 style="color: #1dbf73">{{ "Business Owner" | translate }}</h5>
+            <ul>
+              <li>
+                {{
+                  "Full guarantee of your rights and outstanding technical support at your service"
+                    | translate
+                }}
+              </li>
+              <li>
+                {{
+                  "No additional fees, just pay for your purchases" | translate
+                }}
+              </li>
+              <li>
+                {{
+                  "Enjoy the contests department, the exclusive department in the arab world"
+                    | translate
+                }}
+              </li>
+              <li>
+                {{
+                  "Various, secure and flexible payment methods suitable for all countries"
+                    | translate
+                }}
+              </li>
+            </ul>
+          </div>
+          <div class="col-10 col-sm-10 col-md-10 col-lg-5 col-xl-5 col-xxl-5">
+            <img
+              src="./../../../../../assets/images/ulimg1.svg"
+              width="100%"
+              height="300px"
+            />
+          </div>
+        </div>
+
+        <div
+          class="col-12 d-block d-sm-block d-md-block d-lg-flex d-xl-flex d-xxl-flex justify-content-center"
+        >
+          <div class="col-10 col-sm-10 col-md-10 col-lg-6 col-xl-6 col-xxl-5">
+            <img
+              src="./../../../../../assets/images/why-us-reverce.svg"
+              width="100%"
+              height="300"
+            />
+          </div>
+          <div
+            class="m-5 p-5 col-10 col-sm-10 col-md-10 col-lg-6 col-xl-6 col-xxl-5"
+          >
+            <h5 style="color: #1dbf73">{{ "Freelancer" | translate }}</h5>
+            <ul>
+              <li>
+                {{
+                  "Full guarantee of your rights and outstanding technical support at your service"
+                    | translate
+                }}
+              </li>
+              <li>
+                {{
+                  "Profits suspension period may be up to two days only"
+                    | translate
+                }}
+              </li>
+              <li>
+                {{
+                  "Kafiil platform commission may be up to 10% only" | translate
+                }}
+              </li>
+              <li>
+                {{
+                  "Various and easy profit withdrawal methods (paypal / vodafone cash / bank transfer / and many other means ....)"
+                    | translate
+                }}
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-12 text-center p-5">
+          <h2>{{ "Our Departments" | translate }}</h2>
+          <p>
+            {{
+              "Kafiil has many different departments (contests / mini-services / projects) that meet your different needs to develop your business"
+                | translate
+            }}
+          </p>
+        </div>
+      </div>
+      <div class="p-3 d-flex justify-content-center text-center">
+        <div class="w-25 p-3 tab" routerLink="/services">
+          {{ "Services" | translate }}
+        </div>
+        <div class="w-25 p-3 tab" routerLink="/projects">
+          {{ "Projects" | translate }}
+        </div>
+        <div class="w-25 p-3 tab" routerLink="/contests">
+          {{ "Contests" | translate }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row m-0">
+  <div id="containerOfTabs">
+    <div class="col-12 d-flex text-center">
+      <div class="servicesTabsCon w-100">
+        <div
+          class="servicesTabs col-6 col-sm-6 col-md-4 col-lg-4 col-xl-4 col-xxl-4"
+        >
+          <div class="insideTab">
+            <i class="fa-solid fa-suitcase fa-2xl" style="color: #1dbf73"></i>
+            <h5 class="my-3">{{ "Business" | translate }}</h5>
+          </div>
+        </div>
+        <div
+          class="servicesTabs col-6 col-sm-6 col-md-4 col-lg-4 col-xl-4 col-xxl-4"
+        >
+          <div class="insideTab">
+            <i
+              class="fa-sharp fa-solid fa-code fa-2xl"
+              style="color: #1dbf73"
+            ></i>
+            <h5 class="my-3">{{ "Software" | translate }}</h5>
+          </div>
+        </div>
+        <div
+          class="servicesTabs col-6 col-sm-6 col-md-4 col-lg-4 col-xl-4 col-xxl-4"
+        >
+          <div class="insideTab">
+            <i
+              class="fa-solid fa-square-poll-vertical fa-2xl"
+              style="color: #1dbf73"
+            ></i>
+            <h5 class="my-3">{{ "Marketing" | translate }}</h5>
+          </div>
+        </div>
+        <div
+          class="servicesTabs col-6 col-sm-6 col-md-4 col-lg-4 col-xl-4 col-xxl-4"
+        >
+          <div class="insideTab">
+            <i class="fa-solid fa-pen-nib fa-2xl" style="color: #1dbf73"></i>
+            <h5 class="my-3">{{ "Design" | translate }}</h5>
+          </div>
+        </div>
+        <div
+          class="servicesTabs col-6 col-sm-6 col-md-4 col-lg-4 col-xl-4 col-xxl-4"
+        >
+          <div class="insideTab">
+            <i class="fa-solid fa-video fa-2xl" style="color: #1dbf73"></i>
+            <h5 class="my-3">{{ "Video" | translate }}</h5>
+          </div>
+        </div>
+        <div
+          class="servicesTabs col-6 col-sm-6 col-md-4 col-lg-4 col-xl-4 col-xxl-4"
+        >
+          <div class="insideTab">
+            <i class="fa-solid fa-microphone fa-2xl" style="color: #1dbf73"></i>
+            <h5 class="my-3">{{ "Audio" | translate }}</h5>
+          </div>
+        </div>
+        <div
+          class="servicesTabs col-6 col-sm-6 col-md-4 col-lg-4 col-xl-4 col-xxl-4"
+        >
+          <div class="insideTab">
+            <i class="fa-solid fa-language fa-2xl" style="color: #1dbf73"></i>
+            <h5 class="my-3">{{ "Writing And Translation" | translate }}</h5>
+          </div>
+        </div>
+        <div
+          class="servicesTabs col-6 col-sm-6 col-md-4 col-lg-4 col-xl-4 col-xxl-4"
+        >
+          <div class="insideTab">
+            <i
+              class="fa-solid fa-chalkboard-user fa-2xl"
+              style="color: #1dbf73"
+            ></i>
+            <h5 class="my-3">{{ "Education And Consulting" | translate }}</h5>
+          </div>
+        </div>
+        <div
+          class="servicesTabs col-6 col-sm-6 col-md-4 col-lg-4 col-xl-4 col-xxl-4"
+        >
+          <div class="insideTab">
+            <i
+              class="fa-solid fa-comments-dollar fa-2xl"
+              style="color: #1dbf73"
+            ></i>
+            <h5 class="my-3">{{ "Financial Services" | translate }}</h5>
+          </div>
+        </div>
+        <div
+          class="servicesTabs col-6 col-sm-6 col-md-4 col-lg-4 col-xl-4 col-xxl-4"
+        >
+          <div class="insideTab">
+            <i
+              class="fa-sharp fa-solid fa-list-ul fa-2xl"
+              style="color: #1dbf73"
+            ></i>
+            <h5 class="my-3">{{ "Other Services" | translate }}</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div
+  class="container-fluid mt-5"
+  style="background-color: #f1f2f2; border: 1px solid rgb(207, 206, 206)"
+>
+  <div class="row">
+    <div
+      class="col-12 d-block d-sm-block d-md-block d-lg-flex d-xl-flex d-xxl-flex p-5"
+    >
+      <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 col-xxl-5 p-5">
+        <h1 class="m-3">{{ "Register in Kafeel" | translate }}</h1>
+        <p class="m-3">
+          {{
+            "Enjoy Kafeel's various sections (contests / projects / micro-services) that provide you with all your needs for the growth of your projects with a selection of the best independent candidates nominated by Kafeel"
+              | translate
+          }}
+        </p>
+        <button class="myBtn w-25 m-3" routerLink="/register">
+          {{ "register now" | translate }}
+        </button>
+      </div>
+      <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 col-xxl-5">
+        <img
+          src="./../../../../../assets/images/register-now.svg"
+          width="100%"
+          height="300px"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-12">
+      <div class="text-center">
+        <h2>{{ "Frequently Asked Questions" | translate }}</h2>
+      </div>
+      <div
+        class="d-block d-sm-block d-md-block d-lg-flex d-xl-flex d-xxl-flex m-5 p-5"
+      >
+        <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 col-xxl-4">
+          <ul class="nav flex-column ms-3 mt-3">
+            <li class="nav-item m-0 navBar p-1 d-flex">
+              <a class="nav-link active" aria-current="page" routerLink="#">
+                <i
+                  class="fa-solid fa-suitcase fa-lg ms-3"
+                  style="color: #1dbf73"
+                ></i>
+                {{ "General" | translate }}</a
+              >
+            </li>
+            <li class="nav-item m-0 navBar p-1">
+              <a class="nav-link" routerLink="/services">
+                <i
+                  class="fa-solid fa-suitcase fa-lg ms-3"
+                  style="color: #1dbf73"
+                ></i>
+                {{ "Services" | translate }}</a
+              >
+            </li>
+            <li class="nav-item m-0 navBar p-1">
+              <a class="nav-link" routerLink="/portfolois">
+                <i
+                  class="fa-solid fa-suitcase fa-lg ms-3"
+                  style="color: #1dbf73"
+                ></i>
+                {{ "Projects" | translate }}</a
+              >
+            </li>
+            <li class="nav-item m-0 navBar p-1">
+              <a class="nav-link" routerLink="/contests">
+                <i
+                  class="fa-solid fa-suitcase fa-lg ms-3"
+                  style="color: #1dbf73"
+                ></i>
+                {{ "Contests" | translate }}</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8 col-xxl-8">
+          <div class="accordion mt-3" id="accordionPanelsStayOpenExample">
+            <div class="accordion-item">
+              <h2 class="accordion-header" id=" panelsStayOpen-headingOne">
+                <button
+                  class="accordion-button p-3"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#panelsStayOpen-collapseOne"
+                  aria-expanded="true"
+                  aria-controls="panelsStayOpen-collapseOne"
+                >
+                  <div>{{ "What is Kafiil ?" | translate }}</div>
+                </button>
+              </h2>
+              <div
+                id="panelsStayOpen-collapseOne"
+                class="accordion-collapse collapse show"
+                aria-labelledby="panelsStayOpen-headingOne"
+              >
+                <div class="accordion-body p-3">
+                  <p>
+                    {{ "What is Kafiil txt" | translate }}
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+                <button
+                  class="accordion-button p-3 collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#panelsStayOpen-collapseTwo"
+                  aria-expanded="false"
+                  aria-controls="panelsStayOpen-collapseTwo"
+                >
+                  {{
+                    "How can Talanted people benefit from Kafiil?" | translate
+                  }}
+                </button>
+              </h2>
+              <div
+                id="panelsStayOpen-collapseTwo"
+                class="accordion-collapse collapse"
+                aria-labelledby="panelsStayOpen-headingTwo"
+              >
+                <div class="accordion-body p-3">
+                  <p>
+                    {{
+                      "How can Talanted people benefit from Kafiil txt"
+                        | translate
+                    }}
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+                <button
+                  class="accordion-button p-3 collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#panelsStayOpen-collapseThree"
+                  aria-expanded="false"
+                  aria-controls="panelsStayOpen-collapseThree"
+                >
+                  {{
+                    "How does Kafiil guarantee my rights as a buyer?"
+                      | translate
+                  }}
+                </button>
+              </h2>
+              <div
+                id="panelsStayOpen-collapseThree"
+                class="accordion-collapse collapse"
+                aria-labelledby="panelsStayOpen-headingThree"
+              >
+                <div class="accordion-body p-3">
+                  <p>
+                    {{
+                      "How does Kafiil guarantee my rights as a buyer? txt"
+                        | translate
+                    }}
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="panelsStayOpen-heading1">
+                <button
+                  class="accordion-button p-3 collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#panelsStayOpen-collapse1"
+                  aria-expanded="false"
+                  aria-controls="panelsStayOpen-collapse1"
+                >
+                  {{
+                    "How does Kafiil guarantee my rights as a Freelancer?"
+                      | translate
+                  }}
+                </button>
+              </h2>
+              <div
+                id="panelsStayOpen-collapse1"
+                class="accordion-collapse collapse"
+                aria-labelledby="panelsStayOpen-heading1"
+              >
+                <div class="accordion-body p-3">
+                  <p>
+                    {{
+                      "How does Kafiil guarantee my rights as a Freelancer? txt"
+                        | translate
+                    }}
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="panelsStayOpen-heading2">
+                <button
+                  class="accordion-button p-3 collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#panelsStayOpen-collapse2"
+                  aria-expanded="false"
+                  aria-controls="panelsStayOpen-collapse2"
+                >
+                  {{
+                    "What are the levels of (Freelancers) sellers in Kafil?"
+                      | translate
+                  }}
+                </button>
+              </h2>
+              <div
+                id="panelsStayOpen-collapse2"
+                class="accordion-collapse collapse"
+                aria-labelledby="panelsStayOpen-heading2"
+              >
+                <div class="accordion-body p-3">
+                  <p>
+                    {{
+                      "What are the levels of (Freelancers) sellers in Kafil? txt"
+                        | translate
+                    }}
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="panelsStayOpen-heading3">
+                <button
+                  class="accordion-button p-3 collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#panelsStayOpen-collapse3"
+                  aria-expanded="false"
+                  aria-controls="panelsStayOpen-collapse3"
+                >
+                  {{
+                    "What are the levels of buyers in in Kafiil?" | translate
+                  }}
+                </button>
+              </h2>
+              <div
+                id="panelsStayOpen-collapse3"
+                class="accordion-collapse collapse"
+                aria-labelledby="panelsStayOpen-heading3"
+              >
+                <div class="accordion-body p-3">
+                  <p>
+                    {{
+                      "What are the levels of buyers in in Kafiil? txt"
+                        | translate
+                    }}
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="panelsStayOpen-heading4">
+                <button
+                  class="accordion-button p-3 collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#panelsStayOpen-collapse4"
+                  aria-expanded="false"
+                  aria-controls="panelsStayOpen-collapse4"
+                >
+                  {{
+                    "What are the advantages granted to the different levels of (Freelancers) sellers?"
+                      | translate
+                  }}
+                </button>
+              </h2>
+              <div
+                id="panelsStayOpen-collapse4"
+                class="accordion-collapse collapse"
+                aria-labelledby="panelsStayOpen-heading4"
+              >
+                <div class="accordion-body p-3">
+                  <p>
+                    {{
+                      "What are the advantages granted to the different levels of (Freelancers) sellers? txt"
+                        | translate
+                    }}
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="panelsStayOpen-heading5">
+                <button
+                  class="accordion-button p-3 collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#panelsStayOpen-collapse5"
+                  aria-expanded="false"
+                  aria-controls="panelsStayOpen-collapse5"
+                >
+                  {{
+                    "How can I earn from the affiliate marketing program?"
+                      | translate
+                  }}
+                </button>
+              </h2>
+              <div
+                id="panelsStayOpen-collapse5"
+                class="accordion-collapse collapse"
+                aria-labelledby="panelsStayOpen-heading5"
+              >
+                <div class="accordion-body p-3">
+                  <p>
+                    {{
+                      "How can I earn from the affiliate marketing program? txt"
+                        | translate
+                    }}
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="panelsStayOpen-heading6">
+                <button
+                  class="accordion-button p-3 collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#panelsStayOpen-collapse6"
+                  aria-expanded="false"
+                  aria-controls="panelsStayOpen-collapse6"
+                >
+                  {{
+                    "What are the reasons that may lead to the suspension of the user's account?"
+                      | translate
+                  }}
+                </button>
+              </h2>
+              <div
+                id="panelsStayOpen-collapse6"
+                class="accordion-collapse collapse"
+                aria-labelledby="panelsStayOpen-heading6"
+              >
+                <div class="accordion-body p-3">
+                  <p>
+                    {{
+                      "What are the reasons that may lead to the suspension of the user's account? txt"
+                        | translate
+                    }}
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="panelsStayOpen-heading7">
+                <button
+                  class="accordion-button p-3 collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#panelsStayOpen-collapse7"
+                  aria-expanded="false"
+                  aria-controls="panelsStayOpen-collapse7"
+                >
+                  {{
+                    "Will I be able to withdraw the balance if my account is permanently suspended?"
+                      | translate
+                  }}
+                </button>
+              </h2>
+              <div
+                id="panelsStayOpen-collapse7"
+                class="accordion-collapse collapse"
+                aria-labelledby="panelsStayOpen-heading7"
+              >
+                <div class="accordion-body p-3">
+                  <p>
+                    {{
+                      "Will I be able to withdraw the balance if my account is permanently suspended? txt"
+                        | translate
+                    }}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,148 @@
+<div>
+  <div class="row m-0 p-3">
+    <div class="col-3 d-none d-lg-flex flex-column mx-3 p-3">
+      <span class="fs-4 my-3">{{ "post" | translate }} </span>
+      <iframe
+        src="https://www.youtube.com/embed/k1kTyICn6Ew"
+        title="كيفية إضافة خدمة مصغرة جديدة على منصة كفيل ؟"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen
+      ></iframe>
+      <p class="text-black-50 my-4">
+        {{ "KafiilPlatformHelps" | translate }}
+      </p>
+      <h5><span class="fas fa-lightbulb"></span>{{ "Tips" | translate }}</h5>
+      <ul class="px-3 tips-content">
+        <li>{{ "Tips1" | translate }}</li>
+        <li>
+          {{ "Tips2" | translate }}
+        </li>
+        <li>
+          {{ "Tips3" | translate }}
+        </li>
+        <li>{{ "Tips4" | translate }}</li>
+        <li>
+          {{ "Tips5" | translate }}
+        </li>
+        <li>
+          {{ "Tips6" | translate }}
+        </li>
+      </ul>
+      <div class="col-12 px-0 mb-4">
+        <h5>
+          <span class="fas fa-shield-alt" style="color: #1dbf73"> </span>
+          {{ "KafiilGuarantees" | translate }}
+        </h5>
+        <div class="col-12 px-0 tips-content">
+          {{ "KafiilPlatform" | translate }}
+        </div>
+      </div>
+    </div>
+
+    <div class="col-8 P-form p-3 m-3">
+      <form class="p-3" (ngSubmit)="addData()">
+        <div class="mb-3">
+          <label for="name">{{ "nameowner" | translate }}</label>
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            [(ngModel)]="newportfolois.name"
+            name="name"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="ownerimg">{{ "imgowner" | translate }}</label>
+          <input
+            type="text"
+            class="form-control"
+            id="ownerimg"
+            [(ngModel)]="newportfolois.ownerimg"
+            name="ownerimg"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="address" class="form-label">
+            {{ "title" | translate }}</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            id="address"
+            placeholder=" {{ 'title' | translate }}"
+            name="title"
+            [(ngModel)]="newportfolois.protfoloiName"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="img">{{ "img" | translate }}</label>
+          <input
+            type="text"
+            class="form-control"
+            id="img"
+            [(ngModel)]="newportfolois.img"
+            name="img"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="discription" class="form-label">{{
+            "description" | translate
+          }}</label>
+          <textarea
+            rows="4"
+            class="form-control text-muted"
+            name="discription"
+            [(ngModel)]="newportfolois.titel"
+          ></textarea>
+        </div>
+        <div class="mb-3">
+          <div class="col">
+            <label for="category" class="form-label">{{
+              "section" | translate
+            }}</label>
+            <input
+              type="text"
+              class="form-control text-muted"
+              placeholder="{{ 'section' | translate }}"
+              id="category"
+              name="category"
+              [(ngModel)]="newportfolois.category"
+            />
+          </div>
+
+          <div class="mb-3">
+            <label for="watch">{{ "Views" | translate }}</label>
+            <input
+              type="number"
+              class="form-control"
+              id="watch"
+              [(ngModel)]="newportfolois.watch"
+              name="watch"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="like">{{ "like" | translate }}</label>
+            <input
+              type="number"
+              class="form-control"
+              id="like"
+              [(ngModel)]="newportfolois.like"
+              name="like"
+            />
+          </div>
+          <div class="col">
+            <label for="skills" class="form-label">{{
+              "skill" | translate
+            }}</label>
+            <input type="text" class="form-control text-muted" id="skills" />
+          </div>
+        </div>
+        <button type="submit" class="btn btn-success rounded submitbtn">
+          {{ "add" | translate }}
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

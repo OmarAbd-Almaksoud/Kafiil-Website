@@ -1,0 +1,105 @@
+@import url("https://fonts.googleapis.com/css2?family=Cairo&display=swap");
+* {
+  font-family: "Cairo", sans-serif;
+}
+
+////////////variables/////
+$accent-color: #1dbf73;
+$secondary-color: #f1f2f2;
+$input-border-color: #158350;
+//////////////
+#body {
+  background-color: $secondary-color;
+}
+#search-for-gigs {
+  outline-color: $accent-color;
+  border-radius: 10px 0 0 10px;
+  margin-right: 3px;
+}
+.real-time-search-results a span {
+  margin-inline: 0.5rem;
+}
+.real-time-search-results a {
+  text-decoration: none;
+  font-size: 1.2rem;
+  color: #3e3e3e;
+  margin-inline: 1rem;
+  margin-block: 0.5rem;
+}
+.real-time-search-results img {
+  width: 100px;
+  border-radius: 0.2rem;
+}
+.real-time-search-results {
+  // width: 80%;
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  background-color: #fff;
+  border: 1px solid #dedede;
+  border-radius: 0.3rem;
+}
+.addservicebtn:hover {
+  background-color: $input-border-color;
+  color: #fff;
+}
+.addservicebtn {
+  background-color: $accent-color;
+  color: white;
+  width: 50%;
+  margin-top: 0.5rem;
+}
+.title-desc {
+  max-width: 568px;
+  color: #707070;
+  text-align: center;
+  margin: auto;
+  margin-bottom: 40px;
+}
+#search-for-gigs:focus {
+  background-color: #1583500d;
+  outline: 2px solid $accent-color;
+}
+
+.search-box {
+  background-color: white;
+  color: #b7b7b7;
+}
+#search {
+  background-color: $accent-color;
+  color: white;
+}
+a {
+  text-decoration: none !important;
+}
+.search-category {
+  text-align: center;
+  padding: 40px 5px;
+  border-radius: 8px;
+  background-color: #fff;
+  border: 1px solid #dee0e1;
+  display: block;
+  min-height: 100%;
+  img {
+    height: 58px;
+  }
+  p {
+    color: #707070;
+    text-decoration: none;
+  }
+}
+.see-all-solid {
+  color: #1dbf73;
+  a {
+    &hover {
+      text-decoration: none;
+    }
+
+    text-decoration: none;
+  }
+}
+#arrowicon {
+  transition: 0.4s;
+}

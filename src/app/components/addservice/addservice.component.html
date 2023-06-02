@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="ar">
+  <body>
+    <div class="container d-flex mt-2 justify-content-between">
+      <div class="col-12 col-lg-8 rounded border mx-4 bg-white mb-5">
+        <div
+          class="add-service-header py-2 px-3 d-flex justify-content-between flex-row align-items-center"
+        >
+          <span class="pagetitle">
+            <i class="far fa-list-alt"></i>
+            {{ "add_mservice" | translate }}
+          </span>
+
+          <button
+            class="btn btn-outline-warning"
+            (click)="restoreDraft()"
+            *ngIf="serviceDraft != null"
+          >
+            {{ "recover_draft" | translate
+            }}<i class="fa-solid fa-arrow-rotate-left px-2"></i>
+          </button>
+        </div>
+        <!-- {{ serviceform.value | json }}  -->
+        <div class="add-service-body p-3">
+          <form action="" [formGroup]="serviceform" (ngSubmit)="addservice()">
+            <!-- title:{{ serviceform.get("title")?.errors | json }}
+            description:
+            {{ serviceform.get("description")?.errors | json }}
+            category:
+            {{ serviceform.get("category")?.errors | json }}
+            price:
+            {{ serviceform.get("price")?.errors | json }}
+            mainImg:
+            {{ serviceform.get("mainImg")?.errors | json }}
+            deliveryDuration:
+            {{ serviceform.get("deliveryDuration")?.errors | json }}
+            buyerinstructions :
+            {{ serviceform.get("buyerinstructions")?.errors | json }} -->
+
+            <div class="mb-3">
+              <label for="title" class="form-label">{{
+                "title" | translate
+              }}</label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="title"
+                id="title"
+                name="title"
+                placeholder="{{ 'what_u_offer' | translate }}"
+                required
+                [class.is-valid]="serviceform.get('title')?.valid"
+                [class.is-invalid]="
+                  serviceform.get('title')?.invalid &&
+                  serviceform.get('title')?.dirty
+                "
+              />
+              <!-- validation errors -->
+              <div
+                class="invalid-feedback p-1 my-2"
+                role="alert"
+                [hidden]="
+                  serviceform.get('title')?.valid ||
+                  !serviceform.get('title')?.dirty
+                "
+              >
+                <small *ngIf="serviceform.get('title')?.errors?.['required']"
+                  >لايمكن ان يكون العنوان فارغ!
+                </small>
+                <small *ngIf="serviceform.get('title')?.errors?.['minlength']"
+                  >يجب ان يكون العنوان اكثر من 5 احرف ع الاقل</small
+                >
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="category" class="form-label">{{
+                "category" | translate
+              }}</label>
+              <select
+                id="category"
+                class="form-select"
+                formControlName="category"
+                [class.is-valid]="serviceform.get('category')?.valid"
+                [class.is-invalid]="
+                  serviceform.get('category')?.invalid &&
+                  serviceform.get('category')?.dirty
+                "
+              >
+                <option selected disabled value="" class="text-light-emphasis">
+                  {{ "category" | translate }}
+                </option>
+                <option
+                  *ngFor="let item of categorylist"
+                  [value]="item.categoryName"
+                >
+                  {{ item.categoryName }}
+                </option>
+              </select>
+              {{ this.serviceform.get("category")?.value }}
+              <!-- validation errors -->
+              <div
+                class="invalid-feedback p-1 my-2"
+                role="alert"
+                [hidden]="
+                  serviceform.get('category')?.valid ||
+                  !serviceform.get('category')?.dirty
+                "
+              >
+                <small *ngIf="serviceform.get('category')?.errors?.['required']"
+                  >يجب ان تحدد القسم الخاص بالخدمة !
+                </small>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="description" class="form-label"
+                >{{ "description" | translate }}:</label
+              >
+              <textarea
+                class="form-control"
+                id="description"
+                name="description"
+                formControlName="description"
+                rows="7"
+                placeholder="{{ 'description' | translate }}"
+                required
+                [class.is-valid]="serviceform.get('description')?.valid"
+                [class.is-invalid]="
+                  serviceform.get('description')?.invalid &&
+                  serviceform.get('description')?.dirty
+                "
+              ></textarea>
+              <!-- validation errors -->
+              <div
+                class="invalid-feedback p-1 my-2"
+                role="alert"
+                [hidden]="
+                  serviceform.get('description')?.valid ||
+                  !serviceform.get('description')?.dirty
+                "
+              >
+                <small
+                  *ngIf="serviceform.get('description')?.errors?.['required']"
+                  >لايمكن ان يكون الوصف فارغ!
+                </small>
+                <small
+                  *ngIf="serviceform.get('description')?.errors?.['minlength']"
+                  >يجب ان يحتوي الوصف علي 100 حرف علي الاقل! , احرص علي ان تقوم
+                  بتوضيح كافة تفاصيل في الخدمة</small
+                >
+              </div>
+            </div>
+
+            <!-- upload images -->
+            <div
+              class="service-images d-flex justify-content-between gap-3 flex-wrap mb-3"
+            >
+              <div class="col-12 col-md-5 d-flex flex-grow-1 flex-column">
+                <span class="mb-2 text-black-50">
+                  {{ "main_img" | translate }}
+
+                  <i
+                    class="fas fa-lightbulb"
+                    data-toggle="tooltip"
+                    data-placement="bottom"
+                    title=" الصورة الرئيسية للخدمة"
+                  ></i>
+                </span>
+
+                <div
+                  class="rounded d-flex justify-content-center p-4"
+                  style="background-color: #f1f0ef"
+                >
+                  <a
+                    class="text-muted"
+                    *ngIf="mainImg == '' || mainImg == null"
+                    href="#"
+                    (click)="chosemainimg()"
+                  >
+                    {{ "choose_img" | translate }}</a
+                  >
+                  <div
+                    class="imgpreview d-flex flex-column"
+                    *ngIf="mainImg && mainImg !== null"
+                  >
+                    <a href="#" class="text-muted" (click)="clearpreview()">
+                      <i class="fa-solid fa-circle-xmark fs-3"></i>
+                    </a>
+                    <img [src]="mainImg" alt="main image" />
+                  </div>
+                </div>
+                <!-- validation errors -->
+                <div
+                  class="invalid-feedback p-1 my-2"
+                  role="alert"
+                  [hidden]="
+                    serviceform.get('mainImg')?.valid ||
+                    !serviceform.get('mainImg')?.dirty
+                  "
+                >
+                  <small
+                    *ngIf="serviceform.get('mainImg')?.errors?.['required']"
+                    >يجب اختيار صورة معبرة عن الخدمة التي ستقوم بها!
+                  </small>
+                </div>
+              </div>
+              <div class="col-12 col-md-5 d-flex flex-grow-1 flex-column">
+                <span class="mb-2 text-black-50">
+                  {{ "additional_imgs" | translate }}
+                  <i
+                    class="fas fa-lightbulb"
+                    data-toggle="tooltip"
+                    data-placement="bottom"
+                    title=""
+                  ></i
+                ></span>
+
+                <div
+                  class="rounded d-flex flex-column align-items-center justify-content-center p-4"
+                  style="background-color: #f1f0ef"
+                >
+                  <a
+                    class="text-muted"
+                    *ngIf="otherImgs.length < 4 || otherImgs == null"
+                    href="#"
+                    (click)="choseimgs()"
+                  >
+                    {{ "choose_imgs" | translate }}
+                  </a>
+                  <div
+                    class="imgpreview d-flex flex-wrap gap-3"
+                    *ngIf="otherImgs && otherImgs !== null"
+                  >
+                    <ng-container *ngFor="let img of otherImgs; let i = index">
+                      <div>
+                        <a
+                          href="#"
+                          class="text-muted"
+                          (click)="clearpreviewitem(i)"
+                        >
+                          <i
+                            class="fa-solid fa-circle-xmark fs-3 position-absolute bg-light-subtle rounded-4"
+                          ></i>
+                        </a>
+                        <img [src]="img" alt="other images" />
+                      </div>
+                    </ng-container>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- buyer instructions -->
+            <div class="mb-3">
+              <label for="buyerinstructions" class="form-label"
+                >{{ "buyer_instructions" | translate }}:</label
+              >
+              <textarea
+                class="form-control"
+                id="buyerinstructions"
+                name="buyerinstructions"
+                formControlName="buyerinstructions"
+                rows="7"
+                placeholder="{{ 'buyer_instructions' | translate }}"
+                required
+                [class.is-valid]="serviceform.get('buyerinstructions')?.valid"
+                [class.is-invalid]="
+                  serviceform.get('buyerinstructions')?.invalid &&
+                  serviceform.get('buyerinstructions')?.dirty
+                "
+              ></textarea>
+              <!-- validation errors -->
+              <div
+                class="invalid-feedback p-1 my-2"
+                role="alert"
+                [hidden]="
+                  serviceform.get('buyerinstructions')?.valid ||
+                  !serviceform.get('buyerinstructions')?.dirty
+                "
+              >
+                <small
+                  *ngIf="serviceform.get('buyerinstructions')?.errors?.['required']"
+                  >لايمكن ان يكون العنوان فارغ!
+                </small>
+                <small
+                  *ngIf="serviceform.get('buyerinstructions')?.errors?.['minlength']"
+                  >يجب ان تكون التعليمات مفصلة وواضحة و اكثر من 20 حرف ع
+                  الاقل</small
+                >
+              </div>
+            </div>
+
+            <!-- buyer instructions -->
+            <div class="row">
+              <div class="col">
+                <label for="price " class="form-label">السعر:</label>
+                <input
+                  type="number"
+                  min="5"
+                  max="999"
+                  class="form-control"
+                  formControlName="price"
+                  name="price"
+                  placeholder="السعر"
+                  aria-label="السعر"
+                  [class.is-valid]="serviceform.get('price')?.valid"
+                  [class.is-invalid]="
+                    serviceform.get('price')?.invalid &&
+                    serviceform.get('price')?.dirty
+                  "
+                />
+                <!-- validation errors -->
+                <div
+                  class="invalid-feedback p-1 my-2"
+                  role="alert"
+                  [hidden]="
+                    serviceform.get('price')?.valid ||
+                    !serviceform.get('price')?.dirty
+                  "
+                >
+                  <small *ngIf="serviceform.get('price')?.errors?.['required']">
+                    يجب اضافة سعر مناسب للخدمة
+                  </small>
+                  <small *ngIf="serviceform.get('price')?.errors?.['min']"
+                    >يجب ان يكون السعر 5$ علي الاقل ..</small
+                  >
+                  <small *ngIf="serviceform.get('price')?.errors?.['max']">
+                    برجاء تحديد سعر مناسب وغير مبالغ فيه للخدمة
+                  </small>
+                </div>
+              </div>
+              <div class="col">
+                <label for="deliveryDuration" class="form-label"
+                  >{{ "deliveryDuration" | translate }}:</label
+                >
+                <select
+                  id="inputState"
+                  class="form-select"
+                  formControlName="deliveryDuration"
+                  [class.is-valid]="serviceform.get('deliveryDuration')?.valid"
+                  [class.is-invalid]="
+                    serviceform.get('deliveryDuration')?.invalid &&
+                    serviceform.get('deliveryDuration')?.dirty
+                  "
+                >
+                  <option selected value="" disabled>
+                    {{ "deliveryDuration" | translate }}
+                  </option>
+                  <option value="1">يوم</option>
+                  <option value="2">يومين</option>
+                  <option
+                    *ngFor="let item of [].constructor(8); let i = index"
+                    value="{{ i + 3 }}"
+                  >
+                    {{ i + 3 }} ايام
+                  </option>
+                  <option
+                    *ngFor="let item of [].constructor(20); let i = index"
+                    value="{{ i + 11 }}"
+                  >
+                    {{ i + 11 }} يوم
+                  </option>
+                </select>
+                <!-- validation errors -->
+                <div
+                  class="invalid-feedback p-1 my-2"
+                  role="alert"
+                  [hidden]="
+                    serviceform.get('deliveryDuration')?.valid ||
+                    !serviceform.get('deliveryDuration')?.dirty
+                  "
+                >
+                  <small
+                    *ngIf="serviceform.get('deliveryDuration')?.errors?.['required']"
+                  >
+                    يجب ان تحدد المدة التي سيتم تسليم هذه الخدمة عندها!
+                  </small>
+                </div>
+              </div>
+            </div>
+
+            <section
+              formArrayName="addons"
+              class="addon d-flex flex-wrap justify-content-between"
+            >
+              <div
+                class="form-group d-flex flex-wrap justify-content-between flex-grow-1 border-bottom"
+                *ngFor="let add of addons.controls; let i = index"
+                [formGroupName]="i"
+              >
+                <span class="mt-4 mb-2"> إضافة {{ i + 1 }} :</span>
+                <div class="col-12 mb-3 border-top pt-3">
+                  <!-- {{ add.get("addonTitle")?.value | json }} -->
+
+                  <label for="addonTitle" class="form-label">العنوان</label>
+
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="addonTitle"
+                    name="addonTitle"
+                    formControlName="addonTitle"
+                    placeholder="ماذا سوف تقدم في الخدمة.؟"
+                    required
+                    [class.is-valid]="add.get('addonTitle')?.valid"
+                    [class.is-invalid]="
+                      add.get('addonTitle')?.invalid &&
+                      add.get('addonTitle')?.dirty
+                    "
+                  />
+                  <!-- validation errors -->
+
+                  <div
+                    class="invalid-feedback p-1 my-2"
+                    role="alert"
+                    [hidden]="
+                      add.get('addonTitle')?.valid ||
+                      !add.get('addonTitle')?.dirty
+                    "
+                  >
+                    <small *ngIf="add.get('addonTitle')?.errors?.['required']"
+                      >لايمكن ان يكون العنوان فارغ!
+                    </small>
+                    <small *ngIf="add.get('addonTitle')?.errors?.['minlength']"
+                      >يجب ان يكون العنوان اكثر من 5 احرف ع الاقل</small
+                    >
+                  </div>
+                </div>
+
+                <div class="col-5 mb-3">
+                  <label for="addonPrice" class="form-label"
+                    >{{ "addon_price" | translate }}:</label
+                  >
+                  <input
+                    type="number"
+                    min="0"
+                    max="999"
+                    class="form-control"
+                    formControlName="addonPrice"
+                    name="addonPrice"
+                    placeholder="السعر"
+                    aria-label="السعر"
+                    required=""
+                    [class.is-valid]="add.get('addonPrice')?.valid"
+                    [class.is-invalid]="
+                      add.get('addonPrice')?.invalid &&
+                      add.get('addonPrice')?.dirty
+                    "
+                  />
+                  <!-- validation errors -->
+                  <div
+                    class="invalid-feedback p-1 my-2"
+                    role="alert"
+                    [hidden]="
+                      add.get('addonPrice')?.valid ||
+                      !add.get('addonPrice')?.dirty
+                    "
+                  >
+                    <small *ngIf="add.get('addonPrice')?.errors?.['max']">
+                      برجاء تحديد سعر مناسب وغير مبالغ فيه للإضافة
+                    </small>
+                  </div>
+                </div>
+                <div class="col-5">
+                  <label for="deliveryDuration" class="form-label"
+                    >{{ "deliveryDuration" | translate }}:</label
+                  >
+                  <select
+                    id="addonDeliveryDuration"
+                    class="form-select"
+                    formControlName="addonDeliveryDuration"
+                    name="addonDeliveryDuration"
+                  >
+                    <option selected value="0">لا يغير من مدة التسليم</option>
+                    <option value="1">يوم</option>
+                    <option value="2">يومين</option>
+                    <option
+                      *ngFor="let item of [].constructor(8); let i = index"
+                      value="{{ i + 3 }}"
+                    >
+                      {{ i + 3 }} ايام
+                    </option>
+                    <option
+                      *ngFor="let item of [].constructor(20); let i = index"
+                      value="{{ i + 11 }}"
+                    >
+                      {{ i + 11 }} يوم
+                    </option>
+                  </select>
+                </div>
+                <div class="col-12 mb-3 pt-3">
+                  <button
+                    *ngIf="addons.length > 0"
+                    href="#"
+                    class="btn btn-outline-danger"
+                    (click)="deleteaddon(i)"
+                  >
+                    <i class="fas fa-minus-square"></i>
+                    {{ "delete_addon" | translate }}
+                  </button>
+                </div>
+              </div>
+            </section>
+
+            <div class="col-12 col-sm-6 my-2">
+              <button
+                *ngIf="addons.length < 4"
+                href="#"
+                class="btn btn-outline-primary"
+                (click)="newaddon()"
+              >
+                <i class="fas fa-plus-square"></i>
+                {{ "add_addon" | translate }}
+              </button>
+            </div>
+            <button
+              type="submit"
+              class="btn btn-success rounded submitbtn border-white"
+            >
+              {{ "place_service" | translate }}
+            </button>
+
+            <button
+              id="modalbtn"
+              type="button"
+              class="btn btn-outline-dark"
+              data-bs-dismiss="modal"
+              data-bs-target="#prelodader"
+              #preloaderdismissmodalbtn
+              (click)="saveDraft()"
+            >
+              {{ "SavDraft" | translate
+              }}<i class="fa-regular fa-floppy-disk px-2"></i>
+            </button>
+            <!-- <button class="btn btn-outline-dark">
+              احفظ كمسودة
+              <i class="fa-regular fa-floppy-disk px-2"></i>
+            </button> -->
+          </form>
+        </div>
+      </div>
+      <div class="col-lg-4 d-none d-lg-flex flex-column">
+        <span class="fs-4 my-3">{{ "post" | translate }} </span>
+        <iframe
+          width="370"
+          height="210"
+          src="https://www.youtube.com/embed/k1kTyICn6Ew"
+          title="كيفية إضافة خدمة مصغرة جديدة على منصة كفيل ؟"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+        ></iframe>
+        <p class="text-black-50 my-4">
+          {{ "KafiilPlatformHelps" | translate }}
+        </p>
+        <h5><span class="fas fa-lightbulb"></span>{{ "Tips" | translate }}</h5>
+        <ul class="px-3 tips-content">
+          <li>{{ "Tips1" | translate }}</li>
+          <li>
+            {{ "Tips2" | translate }}
+          </li>
+          <li>
+            {{ "Tips3" | translate }}
+          </li>
+          <li>{{ "Tips4" | translate }}</li>
+          <li>
+            {{ "Tips5" | translate }}
+          </li>
+          <li>
+            {{ "Tips6" | translate }}
+          </li>
+        </ul>
+        <div class="col-12 px-0 mb-4">
+          <h5>
+            <span class="fas fa-shield-alt" style="color: #1dbf73"> </span>
+            {{ "KafiilGuarantees" | translate }}
+          </h5>
+          <div class="col-12 px-0 tips-content">
+            {{ "KafiilPlatform" | translate }}
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Button trigger modal -->
+    <button
+      id="modalbtn"
+      type="button"
+      class="btn btn-primary d-none"
+      data-bs-toggle="modal"
+      data-bs-target="#staticBackdrop"
+      #loadingmodalbtn
+    >
+      Launch static backdrop modal
+    </button>
+    <!-- Button trigger modal -->
+    <button
+      id="modalbtn"
+      type="button"
+      class="btn btn-primary d-none"
+      data-bs-toggle="modal"
+      data-bs-target="#prelodader"
+      #preloadermodalbtn
+    >
+      Launch preloader modal
+    </button>
+    <button
+      id="modalbtn"
+      type="button"
+      class="btn btn-primary d-none"
+      data-bs-dismiss="modal"
+      data-bs-target="#prelodader"
+      #preloaderdismissmodalbtn
+    >
+      preloader dismiss modal
+    </button>
+  </body>
+</html>

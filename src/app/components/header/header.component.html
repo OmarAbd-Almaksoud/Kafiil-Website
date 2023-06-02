@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="ar" [dir]="'dir' | translate">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./header.component.scss" />
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+      integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"
+      integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css
+    "
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+      integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <title>kafil header</title>
+  </head>
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-lg fixed-top p-lg-0">
+        <div class="header-container container">
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#navbarOffcanvasLg"
+            aria-controls="navbarOffcanvasLg"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div
+            class="offcanvas justify-content-lg-evenly offcanvas-end align-items-lg-center"
+            tabindex="-1"
+            id="navbarOffcanvasLg"
+            aria-labelledby="navbarOffcanvasLgLabel"
+          >
+            <div class="header-right d-flex align-items-center">
+              <a class="navbar-brand">
+                <a routerLink="/home">
+                  <img class="header-logo mx-3" src="assets/main-logo.svg" />
+                </a>
+                <select
+                  class="form-select border-end ps-0 d-md-none"
+                  (change)="changeLang(lang.value)"
+                  #lang
+                  style="width: 30%"
+                >
+                  <option value="ar">العربية</option>
+                  <option value="en">English</option>
+                </select>
+
+                <button
+                  type="button"
+                  class="btn-close border p-2 closeoffcanvas"
+                  data-bs-dismiss="offcanvas"
+                  aria-label="Close"
+                ></button>
+              </a>
+              <form action="" class="searchbox">
+                <i class="fas fa-search fs-5 px-2"></i>
+                <input
+                  type="text"
+                  placeholder="{{ 'search' | translate }}"
+                  class="searchbox-input"
+                  #searchtxt
+                  (keydown)="search(searchtxt.value)"
+                  (keyup)="search(searchtxt.value)"
+                />
+              </form>
+
+              <section
+                class="search-result d-flex flex-column align-items-center"
+                *ngIf="searchtxt.value != ''"
+              >
+                <ng-container
+                  *ngFor="let item of headsearchlist; let i = index"
+                >
+                  <a
+                    *ngIf="i < 5"
+                    (click)="searchtxt.value = ''"
+                    routerLink="services/{{ item.uid }}"
+                    >{{ item.data.title }}</a
+                  >
+                </ng-container>
+              </section>
+            </div>
+            <div class="borderseprator"></div>
+            <ul class="nav-list d-flex justify-content-between">
+              <li class="headerlistitem">
+                <a
+                  routerLink="/services"
+                  data-bs-dismiss="offcanvas"
+                  class="link active"
+                >
+                  <i class="fas fa-shopping-cart"></i>
+                  {{ "Serves" | translate }}
+                </a>
+              </li>
+              <li class="headerlistitem">
+                <a
+                  routerLink="/contests"
+                  data-bs-dismiss="offcanvas"
+                  class="link active"
+                >
+                  <i class="fas fa-trophy"></i>
+                  {{ "contests" | translate }}
+                </a>
+              </li>
+              <li class="headerlistitem">
+                <a
+                  routerLink="/projects"
+                  data-bs-dismiss="offcanvas"
+                  class="link active"
+                >
+                  <i class="fas fa-briefcase"></i>
+                  {{ "projects" | translate }}
+                </a>
+              </li>
+              <li class="headerlistitem">
+                <a
+                  routerLink="/portfolios"
+                  data-bs-dismiss="offcanvas"
+                  class="link active"
+                >
+                  <i class="far fa-image"></i>
+                  {{ "portfolois" | translate }}
+                </a>
+              </li>
+              <li class="headerlistitem">
+                <a
+                  routerLink="/freelancers"
+                  data-bs-dismiss="offcanvas"
+                  class="link active"
+                >
+                  <i class="fas fa-users"></i>
+                  {{ "freelancers" | translate }}
+                </a>
+              </li>
+            </ul>
+            <div class="borderseprator"></div>
+          </div>
+          <div class="unclose d-flex justify-content-between">
+            <img
+              class="logo-small"
+              src="https://kafiil.com/assets/images/logos/small.svg"
+              alt="logo small"
+            />
+
+            <div class="userlogin d-flex justify-content-between gap-3">
+              <ng-container *ngIf="user !== null">
+                <div
+                  class="d-flex allign-items-center justify-content-between flex-grow-1"
+                >
+                  <div class="dropdown">
+                    <a
+                      class="text-decoration-none text-black-50"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
+                    >
+                      <img
+                        [src]="user.photoURL"
+                        class="user-avatar mx-2"
+                        alt=""
+                      />
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu">
+                      <li>
+                        <a
+                          class="dropdown-item active bg-success rounded py-2"
+                          >{{ user.displayName }}</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          class="dropdown-item d-flex justify-content-between"
+                          routerLink="/createservice"
+                        >
+                          {{ "addService" | translate }}</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          class="dropdown-item d-flex justify-content-between"
+                          routerLink="/addContest"
+                          >{{ "addContest" | translate }}</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          class="dropdown-item d-flex justify-content-between"
+                          routerLink="/newportfolio"
+                        >
+                          {{ "addPortfolio" | translate }}</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          class="dropdown-item d-flex justify-content-between"
+                          routerLink="/addproject"
+                        >
+                          {{ "add_project" | translate }}</a
+                        >
+                      </li>
+                      <li>
+                        <hr class="dropdown-divider justify-content-between" />
+                      </li>
+                      <li>
+                        <a
+                          class="dropdown-item d-flex justify-content-between"
+                          (click)="logout()"
+                        >
+                          <span> {{ "logout" | translate }} </span>
+                          <i class="fa-solid fa-power-off"></i>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </ng-container>
+              <ng-container *ngIf="user == null">
+                <a routerLink="/sign-in">
+                  <button class="btn btn-light px-3 px-md-4 border">
+                    {{ "Login" | translate }}
+                  </button>
+                </a>
+                <a routerLink="/register">
+                  <button class="btn btn-register border">
+                    {{ "RegisterNow" | translate }}
+                  </button>
+                </a>
+              </ng-container>
+            </div>
+            <div class="language mx-2">
+              <select
+                class="form-select border-end ps-0 d-none d-md-block"
+                (change)="changeLang(langlg.value)"
+                #langlg
+              >
+                <option value="ar">العربية</option>
+                <option value="en">English</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+  </body>
+</html>

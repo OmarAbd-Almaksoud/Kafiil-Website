@@ -1,0 +1,113 @@
+.accordion-button::before {
+  flex-shrink: 0;
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-left: 0.5rem;
+  content: "";
+  background-image: var(--bs-accordion-btn-active-icon);
+  background-repeat: no-repeat;
+  background-size: 1.25rem;
+  transition: transform 0.2s ease-in-out;
+}
+
+.accordion-button::after {
+  display: none !important;
+}
+.body {
+  background-color: #f1f2f2;
+  padding: 10px;
+}
+* {
+  margin: 0px;
+  padding: 0px;
+}
+.userCard {
+  width: 50%;
+  max-height: fit-content;
+  padding: 20px;
+  margin-left: 25%;
+  margin-right: 25%;
+  margin-top: 15px;
+  border-radius: 10px;
+  text-align: center;
+  background-color: white;
+}
+.checked {
+  color: orange;
+}
+.about {
+  font-size: smaller;
+}
+.myBtn {
+  background-color: #1dbf73;
+  border-radius: 8px;
+  width: 65%;
+  color: white;
+  padding: 8px;
+  border: 1px #1dbf73 solid;
+  transition-property: all;
+  transition-duration: 0.5s;
+}
+.myBtn:hover {
+  background-color: #147447;
+}
+.userImg {
+  width: 60%;
+  margin-left: 20%;
+  margin-right: 20%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+}
+.npBtn {
+  width: 13%;
+  padding: 10px;
+  border: 1px solid rgb(82, 82, 82);
+  font-size: small;
+  font-weight: bold;
+  color: rgb(82, 82, 82);
+  border-radius: 10px;
+  transition-property: all;
+  transition-duration: 0.5s;
+}
+.npBtn:hover {
+  background-color: #1dbf73;
+  color: azure;
+}
+.list-group-item:hover {
+  background-color: #f1f2f2;
+}
+#test {
+  color: #b4b4b4 !important;
+  transition-property: all;
+  transition-duration: 0.5s;
+}
+#test:hover {
+  color: gold !important;
+}
+li {
+  font-size: small;
+}
+
+.accordion-button {
+  background-color: #f1f2f2 !important;
+}
+
+@media only screen and (max-width: 700px) {
+  .userCard {
+    width: 100% !important;
+  }
+}
+@media only screen and (max-width: 823px) and (min-width: 700px) {
+  .userCard {
+    width: 45% !important;
+  }
+}
+#dropDown {
+  background-color: #f1f2f2 !important;
+  border: 1px solid #adadad;
+}
+.BTNForSub {
+  margin-right: 25%;
+  margin-left: 25%;
+}
